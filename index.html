@@ -1,0 +1,2310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Faune & Advogados Associados — escritório em Londrina/PR especializado em Direito do Trabalho. Mais de uma década de atuação no TRT9 e TJPR." />
+<meta name="theme-color" content="#0A0F0D" />
+<title>Faune &amp; Advogados Associados — Direito do Trabalho · Londrina/PR</title>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Faune & Advogados Associados",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Madre Leônia Milito, 1500, sala 511",
+    "addressLocality": "Londrina",
+    "addressRegion": "PR",
+    "postalCode": "87050-260",
+    "addressCountry": "BR"
+  },
+  "telephone": "+5543999683380",
+  "url": "https://fauneadv.com.br",
+  "areaServed": ["Londrina", "Paraná", "Brasil"],
+  "founder": "Gustavo Faune Bonini"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+<style>
+  /* =========================================
+     DESIGN TOKENS — DARK NAVY + LARANJA (estilo Anapol)
+     ========================================= */
+  :root {
+    /* paleta dark navy inspirada em Anapol Weiss */
+    --bg:           #0F1A2E;     /* azul-marinho profundo */
+    --bg-2:         #152540;     /* superfícies levemente claras */
+    --bg-3:         #1B2D4D;     /* cards e seções */
+    --surface:      #233659;     /* card destacado */
+    --line:         #2A3D60;     /* bordas sutis */
+    --line-2:       #3A4D70;     /* bordas mais visíveis */
+
+    --ink:          #FFFFFF;     /* tinta principal */
+    --ink-soft:     rgba(255,255,255,0.78);
+    --ink-mute:     rgba(255,255,255,0.55);
+    --ink-faint:    rgba(255,255,255,0.35);
+
+    /* dourado champagne — meio-termo sofisticado */
+    --brand:        #D4A845;     /* dourado principal */
+    --brand-soft:   #E5BF63;     /* dourado claro */
+    --brand-dark:   #A8842F;     /* dourado escuro */
+    --brand-glow:   rgba(212, 168, 69, 0.20);
+
+    --accent:       #F2DDA0;     /* dourado palha suave */
+    --warn:         #F59E0B;
+    --error:        #EF4444;
+
+    --font-display: "Inter Tight", system-ui, sans-serif;
+    --font-body:    "Plus Jakarta Sans", system-ui, sans-serif;
+
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+    --shadow-md: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+    --shadow-lg: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06);
+    --shadow-glow: 0 8px 40px rgba(212, 168, 69, 0.30);
+
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --container: 1280px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--bg);
+    overflow-x: hidden;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 800px 600px at 80% -10%, rgba(212, 168, 69, 0.10), transparent 60%),
+      radial-gradient(ellipse 600px 400px at 0% 80%, rgba(212, 168, 69, 0.05), transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* textura sutil de diamantes (estilo Giovanni Rodrigues) */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 50% 50%, rgba(212, 168, 69, 0.04) 1.5px, transparent 2px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* =========================================
+     TIPOGRAFIA
+     ========================================= */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+  }
+  .display .accent {
+    color: var(--brand);
+  }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brand);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--brand);
+  }
+
+  .lead {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* =========================================
+     NAV
+     ========================================= */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 14px 0;
+    z-index: 100;
+    background: rgba(10, 15, 13, 0.7);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border-bottom: 1px solid transparent;
+    transition: padding 0.4s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease);
+  }
+  .nav.scrolled {
+    padding: 8px 0;
+    border-bottom-color: var(--line);
+    background: rgba(10, 15, 13, 0.9);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .nav-brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFFFFF;
+    padding: 10px 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+  .nav-brand:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(212, 168, 69, 0.25);
+  }
+  .nav-logo {
+    height: 56px;
+    width: auto;
+    display: block;
+    transition: height 0.3s var(--ease);
+  }
+  .nav.scrolled .nav-logo {
+    height: 44px;
+  }
+  .nav-brand-mark {
+    width: 32px; height: 32px;
+    background: var(--brand);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    color: var(--bg);
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .nav-brand .accent { color: var(--brand); font-weight: 500; }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+  .nav-links > a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    transition: color 0.2s var(--ease);
+  }
+  .nav-links > a:hover { color: var(--ink); }
+
+  .nav-cta {
+    padding: 12px 22px;
+    background: var(--brand);
+    color: var(--bg) !important;
+    border-radius: 100px;
+    font-weight: 700 !important;
+    font-size: 13.5px !important;
+    transition: all 0.3s var(--ease);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-cta:hover {
+    background: var(--brand-soft);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+  }
+  .menu-toggle span {
+    width: 22px; height: 2px;
+    background: var(--ink);
+    border-radius: 1px;
+  }
+
+  @media (max-width: 920px) {
+    .nav-links > a:not(.nav-cta) { display: none; }
+    .menu-toggle { display: flex; }
+  }
+
+  /* =========================================
+     HERO — SPLIT-SCREEN COM FOTO DOMINANTE
+     ========================================= */
+  .hero {
+    position: relative;
+    padding: 0;
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    padding: 80px 60px 80px max(40px, calc((100vw - var(--container)) / 2 + 32px));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeIn 0.8s var(--ease) 0.1s forwards;
+  }
+
+  .hero-title {
+    font-size: clamp(36px, 3.6vw, 56px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+    color: var(--ink);
+    font-family: var(--font-display);
+  }
+  .hero-title .accent {
+    color: var(--brand);
+    position: relative;
+    display: inline;
+    background-image: linear-gradient(transparent 70%, rgba(212, 168, 69, 0.18) 70%);
+  }
+  .hero-title .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: rise 0.9s var(--ease-out) forwards;
+  }
+  .hero-title .word:nth-child(1) { animation-delay: 0.2s; }
+  .hero-title .word:nth-child(2) { animation-delay: 0.3s; }
+  .hero-title .word:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  .hero-lead {
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 520px;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn 1s var(--ease) 0.7s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeIn 1s var(--ease) 0.85s forwards;
+  }
+
+  /* Lado da foto — com faixas verticais */
+  .hero-photo {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-2);
+  }
+
+  /* Faixas verticais decorativas (estilo Giovanni Rodrigues) */
+  .hero-photo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 60px,
+        rgba(212, 168, 69, 0.08) 60px,
+        rgba(212, 168, 69, 0.08) 64px,
+        transparent 64px,
+        transparent 130px,
+        rgba(212, 168, 69, 0.04) 130px,
+        rgba(212, 168, 69, 0.04) 134px
+      );
+    z-index: 1;
+  }
+
+  /* Container da foto do advogado */
+  .hero-photo-frame {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .hero-photo-img {
+    width: 90%;
+    height: 95%;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(15, 26, 46, 0.4) 75%, var(--bg) 100%),
+      url('/public/dr-gustavo.webp');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 8px 8px 0 0;
+  }
+  .hero-photo-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, transparent 50%, rgba(15, 26, 46, 0.6) 100%);
+    pointer-events: none;
+  }
+
+  /* Etiqueta com nome sobre a foto */
+  .hero-photo-tag {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 26, 46, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--line-2);
+    padding: 16px 28px;
+    border-radius: 12px;
+    z-index: 3;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  .hero-photo-tag .tag-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brand);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .hero-photo-tag strong {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    display: block;
+    letter-spacing: -0.01em;
+  }
+
+  @media (max-width: 920px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .hero-content {
+      padding: 60px 24px 40px;
+      text-align: center;
+      align-items: center;
+    }
+    .hero-photo {
+      min-height: 480px;
+    }
+    .hero-eyebrow .eyebrow,
+    .hero-actions {
+      justify-content: center;
+    }
+  }
+
+  .btn {
+    padding: 16px 30px;
+    font-size: 14.5px;
+    font-weight: 700;
+    border-radius: 100px;
+    transition: all 0.3s var(--ease);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--brand);
+    color: var(--bg);
+  }
+  .btn-primary:hover {
+    background: var(--brand-soft);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line-2);
+  }
+  .btn-ghost:hover {
+    background: var(--bg-3);
+    border-color: var(--brand);
+    color: var(--brand);
+  }
+  .btn .arrow {
+    transition: transform 0.3s var(--ease);
+  }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  /* =========================================
+     SEÇÃO STATS — NÚMEROS GIGANTES (estilo Giovanni)
+     ========================================= */
+  .stats {
+    padding: 100px 0;
+    background: var(--bg-2);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Textura de diamantes mais visível na seção stats */
+  .stats::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 50% 50%, rgba(212, 168, 69, 0.08) 1.5px, transparent 2px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  .stats-header {
+    display: grid;
+    grid-template-columns: 1.5fr auto;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 2;
+  }
+  .stats-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+  .stats-title .accent { color: var(--brand); }
+
+  /* Cards conectados por linhas horizontais */
+  .stats-cards {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 0;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .stat-card {
+    background: var(--bg-3);
+    border: 1px solid var(--line-2);
+    border-radius: 16px;
+    padding: 48px 32px;
+    text-align: center;
+    transition: all 0.4s var(--ease);
+  }
+  .stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--brand);
+    box-shadow: var(--shadow-glow);
+  }
+  .stat-card .stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6vw, 88px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .stat-card .stat-num .plus {
+    color: var(--brand);
+    font-weight: 700;
+  }
+  .stat-card .stat-label {
+    font-size: 14px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  /* Linhas conectoras entre cards */
+  .stat-connector {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line-2) 30%, var(--line-2) 70%, transparent);
+    width: 100%;
+    min-width: 40px;
+  }
+
+  @media (max-width: 920px) {
+    .stats { padding: 60px 0; }
+    .stats-header {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: flex-start;
+      margin-bottom: 50px;
+    }
+    .stats-cards {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .stat-connector { display: none; }
+    .stat-card { padding: 32px 24px; }
+  }
+
+  /* =========================================
+     SECTION HEADER PADRÃO
+     ========================================= */
+  section {
+    padding: 120px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sec-header {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    margin-bottom: 80px;
+    align-items: end;
+  }
+  .sec-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-top: 16px;
+  }
+  .sec-title .accent {
+    color: var(--brand);
+  }
+  .sec-intro {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 540px;
+  }
+
+  @media (max-width: 920px) {
+    section { padding: 80px 0; }
+    .sec-header { grid-template-columns: 1fr; gap: 24px; margin-bottom: 50px; }
+  }
+
+  /* =========================================
+     POR QUE — CARDS DE DIFERENCIAIS
+     ========================================= */
+  .why {
+    background: var(--bg-2);
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .why-card {
+    background: var(--bg-3);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+    transition: all 0.4s var(--ease);
+    overflow: hidden;
+  }
+  .why-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--brand), transparent);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+  }
+  .why-card:hover {
+    background: var(--surface);
+    border-color: var(--line-2);
+    transform: translateY(-4px);
+  }
+  .why-card:hover::before {
+    opacity: 1;
+  }
+  .why-card .num {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brand);
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .why-card .num::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+  .why-card h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .why-card p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 920px) {
+    .why-grid { grid-template-columns: 1fr; }
+  }
+
+  /* =========================================
+     ÁREAS — DESTAQUE TRABALHISTA
+     ========================================= */
+  .areas {
+    background: var(--bg);
+  }
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+  }
+  .area {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.4s var(--ease);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+  }
+  .area:hover {
+    background: var(--bg-3);
+    border-color: var(--line-2);
+    transform: translateY(-4px);
+  }
+
+  .area.featured {
+    grid-column: span 6;
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: var(--bg);
+    border-color: transparent;
+    min-height: 320px;
+    box-shadow: var(--shadow-glow);
+  }
+  .area.featured:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(43, 217, 160, 0.4);
+  }
+  .area:not(.featured) { grid-column: span 3; }
+
+  .area-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(10, 15, 13, 0.2);
+    color: var(--bg);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    align-self: flex-start;
+  }
+  .area-tag::before {
+    content: "";
+    width: 6px; height: 6px;
+    background: var(--bg);
+    border-radius: 50%;
+  }
+
+  .area-num {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brand);
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+  }
+
+  .area-name {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    color: inherit;
+  }
+  .area.featured .area-name {
+    font-size: 40px;
+    font-weight: 800;
+  }
+
+  .area-desc {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: auto;
+    padding-bottom: 24px;
+  }
+  .area.featured .area-desc {
+    color: rgba(10, 15, 13, 0.85);
+    font-size: 16px;
+  }
+
+  .area-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: gap 0.3s var(--ease);
+  }
+  .area.featured .area-link {
+    color: var(--bg);
+  }
+  .area:hover .area-link { gap: 16px; }
+
+  @media (max-width: 920px) {
+    .area, .area.featured { grid-column: span 12; min-height: auto; }
+    .area.featured .area-name { font-size: 32px; }
+  }
+
+  /* =========================================
+     MÉTODO — STEPS
+     ========================================= */
+  .method {
+    background: var(--bg-2);
+    position: relative;
+  }
+  .method-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .method-step {
+    background: var(--bg-3);
+    padding: 40px 28px;
+    transition: background 0.3s var(--ease);
+  }
+  .method-step:hover {
+    background: var(--surface);
+  }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brand);
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .step-num .dot {
+    width: 8px; height: 8px;
+    background: var(--brand);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--brand);
+  }
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .step-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 920px) {
+    .method-steps { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 540px) {
+    .method-steps { grid-template-columns: 1fr; }
+  }
+
+  /* =========================================
+     PERFIL ADVOGADO — VERSÃO EXPANDIDA
+     ========================================= */
+  .profile {
+    background: var(--bg);
+    overflow: hidden;
+    padding: 120px 0;
+  }
+
+  /* Bloco principal: foto grande + bio */
+  .profile-hero {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: stretch;
+    margin-bottom: 80px;
+  }
+
+  .profile-photo-large {
+    aspect-ratio: 4/5;
+    background:
+      radial-gradient(circle at 30% 20%, var(--brand-glow), transparent 60%),
+      linear-gradient(135deg, var(--bg-3) 0%, var(--surface) 100%);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  .profile-photo-large::before {
+    content: "GF";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-display);
+    font-size: 280px;
+    font-weight: 900;
+    color: rgba(249, 115, 22, 0.06);
+    letter-spacing: -0.06em;
+  }
+  .photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    padding: 40px 36px;
+    background: linear-gradient(0deg, rgba(15, 26, 46, 0.95) 0%, rgba(15, 26, 46, 0.6) 60%, transparent 100%);
+  }
+  .overlay-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .overlay-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brand);
+    font-weight: 700;
+  }
+  .photo-overlay strong {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .overlay-detail {
+    font-size: 13px;
+    color: var(--ink-mute);
+  }
+
+  /* Bio do advogado */
+  .profile-bio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .bio-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brand);
+    margin-bottom: 16px;
+  }
+  .bio-tag::before {
+    content: "";
+    width: 24px; height: 1px;
+    background: var(--brand);
+  }
+  .bio-title {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+    color: var(--ink);
+  }
+  .bio-content {
+    margin-bottom: 32px;
+  }
+  .bio-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .bio-content p strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .bio-quote {
+    background: var(--bg-2);
+    border-left: 3px solid var(--brand);
+    padding: 28px 32px;
+    border-radius: 0 12px 12px 0;
+    position: relative;
+  }
+  .quote-mark {
+    font-family: var(--font-display);
+    font-size: 80px;
+    line-height: 0.5;
+    color: var(--brand);
+    opacity: 0.3;
+    position: absolute;
+    top: 20px;
+    left: 28px;
+    pointer-events: none;
+  }
+  .bio-quote p {
+    font-family: var(--font-display);
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--ink);
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .quote-attr {
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  /* Faixa de credenciais — números grandes estilo Anapol */
+  .credentials-bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    gap: 0;
+    align-items: center;
+    background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 48px 32px;
+    margin-bottom: 80px;
+  }
+  .cred-stat {
+    text-align: center;
+    padding: 0 16px;
+  }
+  .cred-num {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .cred-num .plus,
+  .cred-num .small {
+    color: var(--brand);
+    font-weight: 700;
+  }
+  .cred-num .small { font-size: 0.55em; }
+  .cred-label {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .cred-divider {
+    width: 1px;
+    height: 80px;
+    background: var(--line-2);
+  }
+
+  /* Grid de detalhes da bio */
+  .bio-details {
+    margin-bottom: 60px;
+  }
+  .bio-details-title {
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+    color: var(--ink);
+  }
+  .bio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .bio-item {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 26px;
+    transition: all 0.4s var(--ease);
+  }
+  .bio-item:hover {
+    background: var(--bg-3);
+    border-color: var(--line-2);
+    transform: translateY(-3px);
+  }
+  .bio-icon {
+    width: 44px; height: 44px;
+    background: var(--brand-glow);
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    color: var(--brand);
+    margin-bottom: 18px;
+  }
+  .bio-item h4 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .bio-item p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* CTA final pessoal */
+  .profile-cta {
+    background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
+    border-radius: 20px;
+    padding: 48px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-glow);
+  }
+  .profile-cta-content {
+    flex: 1;
+    min-width: 280px;
+  }
+  .profile-cta h3 {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--bg);
+    margin-bottom: 8px;
+  }
+  .profile-cta h3 .accent {
+    color: var(--bg);
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-color: rgba(15, 26, 46, 0.4);
+    text-underline-offset: 6px;
+  }
+  .profile-cta p {
+    font-size: 15px;
+    color: rgba(15, 26, 46, 0.78);
+    font-weight: 500;
+  }
+  .profile-cta .btn-primary {
+    background: var(--bg);
+    color: var(--brand);
+  }
+  .profile-cta .btn-primary:hover {
+    background: var(--bg-2);
+    color: var(--brand);
+  }
+
+  @media (max-width: 920px) {
+    .profile { padding: 80px 0; }
+    .profile-hero { grid-template-columns: 1fr; gap: 50px; }
+    .profile-photo-large { max-width: 480px; margin: 0 auto; }
+    .credentials-bar {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 0;
+      padding: 36px 24px;
+    }
+    .cred-divider { display: none; }
+    .bio-grid { grid-template-columns: 1fr; }
+    .profile-cta { padding: 36px; flex-direction: column; align-items: flex-start; }
+  }
+
+  /* =========================================
+     LEAD MAGNET / NEWSLETTER
+     ========================================= */
+  .lead-magnet {
+    padding: 60px 0;
+    background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .lead-magnet::before {
+    content: "";
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 60%);
+    pointer-events: none;
+  }
+  .lead-magnet-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .lead-magnet h3 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 38px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--bg);
+    margin-bottom: 12px;
+  }
+  .lead-magnet p {
+    color: rgba(10, 15, 13, 0.78);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .lead-magnet-form {
+    display: flex;
+    gap: 8px;
+    background: var(--bg);
+    padding: 6px;
+    border-radius: 100px;
+  }
+  .lead-magnet-form input {
+    flex: 1;
+    padding: 12px 22px;
+    background: transparent;
+    border: none;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 14.5px;
+    outline: none;
+  }
+  .lead-magnet-form input::placeholder {
+    color: var(--ink-mute);
+  }
+  .lead-magnet-form button {
+    padding: 12px 24px;
+    background: var(--brand);
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    transition: background 0.25s var(--ease);
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+  }
+  .lead-magnet-form button:hover {
+    background: var(--brand-soft);
+  }
+
+  @media (max-width: 920px) {
+    .lead-magnet-grid { grid-template-columns: 1fr; gap: 30px; }
+  }
+
+  /* =========================================
+     FAQ
+     ========================================= */
+  .faq {
+    background: var(--bg);
+  }
+  .faq-list {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-q {
+    width: 100%;
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    transition: color 0.25s var(--ease);
+    letter-spacing: -0.01em;
+  }
+  .faq-q:hover { color: var(--brand); }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border: 1px solid var(--line-2);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+    font-weight: 300;
+    transition: all 0.4s var(--ease);
+    color: var(--brand);
+  }
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg);
+    background: var(--brand);
+    color: var(--bg);
+    border-color: var(--brand);
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s var(--ease);
+  }
+  .faq-a-inner {
+    padding: 0 0 28px;
+    max-width: 760px;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    line-height: 1.7;
+  }
+
+  /* =========================================
+     CTA / FORMULÁRIO PRINCIPAL
+     ========================================= */
+  .cta {
+    padding: 120px 0;
+    background: var(--bg-2);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: "";
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--brand-glow), transparent 60%);
+    pointer-events: none;
+  }
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+  }
+  .cta-text h2 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+  }
+  .cta-text h2 .accent { color: var(--brand); }
+  .cta-text p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+  .cta-info {
+    display: grid;
+    gap: 14px;
+  }
+  .cta-info-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  .cta-info-icon {
+    width: 40px; height: 40px;
+    background: var(--bg-3);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    color: var(--brand);
+  }
+  .cta-form {
+    background: var(--bg-3);
+    padding: 40px 36px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+  }
+  .cta-form .eyebrow {
+    margin-bottom: 16px;
+  }
+  .cta-form h3 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  .cta-form h3 .accent { color: var(--brand); }
+  .form-grid {
+    display: grid;
+    gap: 12px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 14.5px;
+    transition: all 0.25s var(--ease);
+    border-radius: 8px;
+  }
+  .form-input::placeholder,
+  .form-textarea::placeholder { color: var(--ink-mute); }
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--brand);
+    background: var(--bg);
+    box-shadow: 0 0 0 3px var(--brand-glow);
+  }
+  .form-select { color: var(--ink-mute); }
+  .form-select:not([data-empty="true"]) { color: var(--ink); }
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  .form-submit {
+    padding: 16px 28px;
+    background: var(--brand);
+    color: var(--bg);
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border-radius: 100px;
+    margin-top: 8px;
+    transition: all 0.3s var(--ease);
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .form-submit:hover {
+    background: var(--brand-soft);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow);
+  }
+  .form-disclaimer {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink-faint);
+    margin-top: 14px;
+  }
+
+  @media (max-width: 920px) {
+    .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* =========================================
+     FOOTER
+     ========================================= */
+  .footer {
+    background: var(--bg);
+    padding: 80px 0 32px;
+    border-top: 1px solid var(--line);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    background: #FFFFFF;
+    padding: 16px 24px;
+    border-radius: 12px;
+    align-self: flex-start;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  }
+  .footer-logo {
+    height: 90px;
+    width: auto;
+    display: block;
+  }
+  .footer-brand-mark {
+    width: 36px; height: 36px;
+    background: var(--brand);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    color: var(--bg);
+    font-weight: 800;
+    font-size: 18px;
+  }
+  .footer-brand-name {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .footer-brand-name .accent { color: var(--brand); font-weight: 500; }
+  .footer-tagline {
+    color: var(--ink-mute);
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 320px;
+  }
+  .footer h5 {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brand);
+    margin-bottom: 22px;
+    font-weight: 700;
+  }
+  .footer ul {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+  .footer a {
+    color: var(--ink-soft);
+    font-size: 14px;
+    transition: color 0.25s var(--ease);
+  }
+  .footer a:hover { color: var(--brand); }
+  .footer-base {
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  @media (max-width: 920px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 540px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  /* reveal on scroll — animação suave sem esconder */
+  .reveal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================== NAV ====================== -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="/public/logo-faune.webp" alt="Faune & Advogados Associados" class="nav-logo" />
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#por-que">Por que nós</a>
+      <a href="#areas">Áreas</a>
+      <a href="#metodo">Método</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato" class="nav-cta">Falar com o escritório →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ====================== HERO SPLIT-SCREEN ====================== -->
+<section class="hero">
+  <!-- Lado esquerdo: conteúdo -->
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="eyebrow">Londrina · PR · Desde 2014</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="word">Escritório especializado em</span>
+      <span class="word"><span class="accent">Direito do Trabalho</span>,</span>
+      <span class="word">defendendo seus direitos.</span>
+    </h1>
+    <p class="hero-lead">
+      Mais de uma década atuando em causas trabalhistas no Paraná, com 
+      histórico consolidado no TRT da 9ª Região. Atendimento direto com o 
+      titular, análise técnica caso a caso, comunicação clara em cada etapa.
+    </p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn btn-primary">
+        Entrar em contato
+        <span class="arrow">→</span>
+      </a>
+      <a href="#areas" class="btn btn-ghost">Conhecer áreas</a>
+    </div>
+  </div>
+
+  <!-- Lado direito: foto com faixas verticais -->
+  <div class="hero-photo">
+    <div class="hero-photo-frame">
+      <div class="hero-photo-img"></div>
+    </div>
+    <div class="hero-photo-tag">
+      <div class="tag-eyebrow">Advogado titular</div>
+      <strong>Dr. Gustavo Faune · OAB/PR</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== STATS — NÚMEROS GIGANTES ====================== -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-header">
+      <h2 class="stats-title">
+        Especialistas em Direito do Trabalho:<br>
+        <span class="accent">atuação consolidada</span> no Paraná.
+      </h2>
+      <a href="#contato" class="btn btn-primary">
+        Falar com o escritório
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="stats-cards">
+      <div class="stat-card">
+        <div class="stat-num">10<span class="plus">+</span></div>
+        <div class="stat-label">Anos de atuação<br>profissional</div>
+      </div>
+      <div class="stat-connector"></div>
+      <div class="stat-card">
+        <div class="stat-num">400<span class="plus">+</span></div>
+        <div class="stat-label">Processos no TRT9<br>e TJPR</div>
+      </div>
+      <div class="stat-connector"></div>
+      <div class="stat-card">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Áreas de atuação<br>especializadas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== POR QUE — DIFERENCIAIS ====================== -->
+<section class="why" id="por-que">
+  <div class="container">
+    <div class="sec-header">
+      <div>
+        <span class="eyebrow">Por que escolher</span>
+        <h2 class="sec-title display">Reputação técnica<br>construída em <span class="accent">uma década.</span></h2>
+      </div>
+      <p class="sec-intro">
+        Cada característica abaixo reflete um princípio que orienta o escritório
+        desde a fundação. Sem promessas — apenas o que entregamos no dia a dia.
+      </p>
+    </div>
+
+    <div class="why-grid">
+      <article class="why-card">
+        <div class="num">01.</div>
+        <h3>Foco em Direito do Trabalho</h3>
+        <p>Especialização declarada na área trabalhista, com base sólida em causas conexas — previdenciário, civil e empresarial.</p>
+      </article>
+
+      <article class="why-card">
+        <div class="num">02.</div>
+        <h3>Mais de uma década de atuação</h3>
+        <p>Histórico consolidado em centenas de processos no TRT da 9ª Região, com método consistente de análise documental e estratégica.</p>
+      </article>
+
+      <article class="why-card">
+        <div class="num">03.</div>
+        <h3>Atendimento direto com o titular</h3>
+        <p>O Dr. Gustavo conduz pessoalmente cada caso. Sem terceirização para estagiários ou advogados externos.</p>
+      </article>
+
+      <article class="why-card">
+        <div class="num">04.</div>
+        <h3>Análise sem compromisso</h3>
+        <p>A primeira conversa serve para entender o caso. Não há cobrança nem compromisso de contratação nesse momento.</p>
+      </article>
+
+      <article class="why-card">
+        <div class="num">05.</div>
+        <h3>Comunicação clara</h3>
+        <p>Atualizações ativas em cada movimentação processual. O cliente nunca precisa pedir andamento — recebe automaticamente.</p>
+      </article>
+
+      <article class="why-card">
+        <div class="num">06.</div>
+        <h3>Conformidade ética</h3>
+        <p>Atuação rigorosamente alinhada ao Código de Ética da OAB e ao Provimento 205/2021. Linguagem informativa, sem promessa de resultado.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ÁREAS ====================== -->
+<section class="areas" id="areas">
+  <div class="container">
+    <div class="sec-header">
+      <div>
+        <span class="eyebrow">Áreas de atuação</span>
+        <h2 class="sec-title display">Cinco frentes,<br>uma <span class="accent">especialidade central.</span></h2>
+      </div>
+      <p class="sec-intro">
+        O escritório atua em áreas conexas que frequentemente se cruzam na vida 
+        de uma pessoa ou empresa. Direito do Trabalho é nossa atuação de maior 
+        tradição e volume.
+      </p>
+    </div>
+
+    <div class="areas-grid">
+      <article class="area featured">
+        <span class="area-tag">Especialidade principal</span>
+        <h3 class="area-name">Direito<br>do Trabalho</h3>
+        <p class="area-desc">
+          Atuação em causas de empregados e empregadores: rescisão, horas extras, 
+          equiparação salarial, reconhecimento de vínculo, insalubridade, 
+          assédio moral, compliance trabalhista e contencioso preventivo.
+        </p>
+        <a href="#" class="area-link">Conhecer a atuação <span>→</span></a>
+      </article>
+
+      <article class="area">
+        <div class="area-num">02 / Previdenciário</div>
+        <h3 class="area-name">Previdenciário</h3>
+        <p class="area-desc">
+          Aposentadorias, benefícios por incapacidade e revisões junto ao INSS.
+        </p>
+        <a href="#" class="area-link">Saber mais <span>→</span></a>
+      </article>
+
+      <article class="area">
+        <div class="area-num">03 / Empresarial</div>
+        <h3 class="area-name">Empresarial<br>&amp; Societário</h3>
+        <p class="area-desc">
+          Contratos, governança, sociedades e recuperação judicial.
+        </p>
+        <a href="#" class="area-link">Saber mais <span>→</span></a>
+      </article>
+
+      <article class="area">
+        <div class="area-num">04 / Civil</div>
+        <h3 class="area-name">Civil</h3>
+        <p class="area-desc">
+          Família, sucessões, contratos cíveis e responsabilidade civil.
+        </p>
+        <a href="#" class="area-link">Saber mais <span>→</span></a>
+      </article>
+
+      <article class="area">
+        <div class="area-num">05 / Agronegócio</div>
+        <h3 class="area-name">Agronegócio</h3>
+        <p class="area-desc">
+          Atuação especializada para o setor produtivo do norte do Paraná.
+        </p>
+        <a href="#" class="area-link">Saber mais <span>→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== MÉTODO ====================== -->
+<section class="method" id="metodo">
+  <div class="container">
+    <div class="sec-header">
+      <div>
+        <span class="eyebrow">Método</span>
+        <h2 class="sec-title display">Como conduzimos<br>um <span class="accent">caso.</span></h2>
+      </div>
+      <p class="sec-intro">
+        Um processo bem estruturado começa muito antes da petição inicial. 
+        Nosso método se desenvolve em quatro etapas claras e comunicadas 
+        ao cliente.
+      </p>
+    </div>
+
+    <div class="method-steps">
+      <div class="method-step">
+        <div class="step-num">
+          <span class="dot"></span>
+          <span>Etapa 01</span>
+        </div>
+        <h4 class="step-title">Escuta técnica</h4>
+        <p class="step-desc">
+          Reunião inicial para reconstruir o histórico do caso e identificar 
+          pontos juridicamente relevantes.
+        </p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">
+          <span class="dot"></span>
+          <span>Etapa 02</span>
+        </div>
+        <h4 class="step-title">Análise documental</h4>
+        <p class="step-desc">
+          Estudo dos contratos, holerites, comunicações e documentos pertinentes 
+          à matéria discutida.
+        </p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">
+          <span class="dot"></span>
+          <span>Etapa 03</span>
+        </div>
+        <h4 class="step-title">Estratégia jurídica</h4>
+        <p class="step-desc">
+          Apresentação clara dos cenários possíveis, riscos, prazos e 
+          expectativas realistas.
+        </p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">
+          <span class="dot"></span>
+          <span>Etapa 04</span>
+        </div>
+        <h4 class="step-title">Acompanhamento</h4>
+        <p class="step-desc">
+          Comunicação ativa em cada movimentação processual, sem que o cliente 
+          precise pedir atualizações.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PERFIL ADVOGADO — EXPANDIDO ====================== -->
+<section class="profile" id="sobre">
+  <div class="container">
+
+    <!-- Header da seção -->
+    <div class="sec-header">
+      <div>
+        <span class="eyebrow">O advogado titular</span>
+        <h2 class="sec-title display">Dr. Gustavo Faune.<br>Mais de uma década <span class="accent">à frente do escritório.</span></h2>
+      </div>
+      <p class="sec-intro">
+        O Faune & Advogados Associados é um escritório autoral. Cada caso é conduzido 
+        diretamente pelo titular, sem terceirização para advogados externos ou estagiários.
+      </p>
+    </div>
+
+    <!-- Bloco principal de perfil — foto grande + bio detalhada -->
+    <div class="profile-hero">
+      <div class="profile-photo-large" aria-hidden="true">
+        <div class="photo-overlay">
+          <div class="overlay-content">
+            <span class="overlay-eyebrow">Advogado titular</span>
+            <strong>Dr. Gustavo Faune Bonini</strong>
+            <span class="overlay-detail">OAB/PR · Faune &amp; Advogados Associados</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-bio">
+        <span class="bio-tag">Trajetória</span>
+        <h3 class="bio-title display">Direito do trabalho como <span class="accent">vocação técnica.</span></h3>
+
+        <div class="bio-content">
+          <p>
+            Bacharel em Direito pela <strong>PUC-PR (Londrina)</strong>, o Dr. Gustavo Faune 
+            iniciou sua atuação profissional em 2014 e construiu, ao longo de mais de uma 
+            década, um histórico consistente em causas trabalhistas no Paraná.
+          </p>
+          <p>
+            Com participação direta em <strong>mais de 400 processos</strong> no Tribunal 
+            Regional do Trabalho da 9ª Região e no Tribunal de Justiça do Paraná, desenvolveu 
+            metodologia própria de análise documental e construção de argumento jurídico, 
+            aplicada caso a caso.
+          </p>
+          <p>
+            Em 2022, constituiu o escritório como <strong>sociedade individual de advocacia</strong>, 
+            consolidando uma abordagem autoral marcada por atendimento direto, comunicação clara 
+            e compromisso ético rigoroso com o Código da OAB.
+          </p>
+        </div>
+
+        <div class="bio-quote">
+          <span class="quote-mark">"</span>
+          <p>Cada caso trabalhista carrega uma história — e o trabalho do advogado é traduzir essa história em <span class="accent">argumento jurídico sustentável.</span></p>
+          <span class="quote-attr">— Dr. Gustavo Faune</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Faixa de credenciais -->
+    <div class="credentials-bar">
+      <div class="cred-stat">
+        <div class="cred-num">10<span class="plus">+</span></div>
+        <div class="cred-label">anos de atuação<br>profissional</div>
+      </div>
+      <div class="cred-divider"></div>
+      <div class="cred-stat">
+        <div class="cred-num">400<span class="plus">+</span></div>
+        <div class="cred-label">processos no TRT9<br>e TJPR</div>
+      </div>
+      <div class="cred-divider"></div>
+      <div class="cred-stat">
+        <div class="cred-num">5</div>
+        <div class="cred-label">áreas de atuação<br>cobertas pelo escritório</div>
+      </div>
+      <div class="cred-divider"></div>
+      <div class="cred-stat">
+        <div class="cred-num">100<span class="small">%</span></div>
+        <div class="cred-label">atendimento direto<br>com o titular</div>
+      </div>
+    </div>
+
+    <!-- Grid de detalhes com ícones -->
+    <div class="bio-details">
+      <h3 class="bio-details-title display">Formação e <span class="accent">atuação.</span></h3>
+
+      <div class="bio-grid">
+        <div class="bio-item">
+          <div class="bio-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h4>Formação acadêmica</h4>
+          <p>Bacharel em Direito pela Pontifícia Universidade Católica do Paraná (PUC-PR), campus Londrina. Formação com ênfase em pesquisa jurídica aplicada.</p>
+        </div>
+
+        <div class="bio-item">
+          <div class="bio-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h4>Especialidade declarada</h4>
+          <p>Atuação concentrada em Direito do Trabalho, com base sólida em causas conexas — Previdenciário, Civil, Empresarial e Agronegócio.</p>
+        </div>
+
+        <div class="bio-item">
+          <div class="bio-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M9 17V9M14 17v-5M19 17v-3"/></svg>
+          </div>
+          <h4>Histórico processual</h4>
+          <p>Mais de 400 processos atuados perante o TRT da 9ª Região e o Tribunal de Justiça do Paraná, com experiência comprovada em todas as instâncias.</p>
+        </div>
+
+        <div class="bio-item">
+          <div class="bio-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75M8.5 7.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/></svg>
+          </div>
+          <h4>Atendimento autoral</h4>
+          <p>Cada caso é conduzido pessoalmente pelo Dr. Gustavo, da consulta inicial à decisão final. Sem delegação para advogados externos ou estagiários.</p>
+        </div>
+
+        <div class="bio-item">
+          <div class="bio-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4>Sede em Londrina</h4>
+          <p>Escritório localizado na Av. Madre Leônia Milito, 1500, sala 511 — Bela Suíça. Atendimento presencial e remoto em todo o Paraná.</p>
+        </div>
+
+        <div class="bio-item">
+          <div class="bio-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
+          </div>
+          <h4>Conformidade ética</h4>
+          <p>Atuação rigorosamente alinhada ao Código de Ética da OAB e ao Provimento 205/2021. Linguagem informativa, sem promessa de resultado.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA final pessoal -->
+    <div class="profile-cta">
+      <div class="profile-cta-content">
+        <h3 class="display">Quer conversar diretamente <span class="accent">com o Dr. Gustavo?</span></h3>
+        <p>A primeira conversa é sem compromisso. Análise técnica do seu caso em até 2 horas úteis após o contato.</p>
+      </div>
+      <a href="#contato" class="btn btn-primary">
+        Solicitar análise do caso
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====================== LEAD MAGNET ====================== -->
+<section class="lead-magnet">
+  <div class="container">
+    <div class="lead-magnet-grid">
+      <div>
+        <h3>Guia gratuito: 10 direitos trabalhistas que poucos conhecem.</h3>
+        <p>Conteúdo educativo elaborado pelo escritório. Receba no seu e-mail.</p>
+      </div>
+      <form class="lead-magnet-form" onsubmit="return false;">
+        <input type="email" placeholder="seu@email.com" required />
+        <button type="submit">Receber guia</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FAQ ====================== -->
+<section class="faq">
+  <div class="container">
+    <div class="sec-header">
+      <div>
+        <span class="eyebrow">Dúvidas frequentes</span>
+        <h2 class="sec-title display">Respostas <span class="accent">diretas</span><br>às perguntas comuns.</h2>
+      </div>
+      <p class="sec-intro">
+        Conteúdo informativo, em linguagem direta, sem caráter de consulta 
+        jurídica formal. Para análise do seu caso específico, agende uma 
+        conversa com o escritório.
+      </p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Em quanto tempo prescreve um direito trabalhista?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No Brasil, a regra geral é que o trabalhador tem até 2 anos após o 
+            fim do contrato para ingressar com ação trabalhista, podendo cobrar 
+            verbas referentes aos últimos 5 anos do vínculo. Esse prazo é 
+            fundamental e merece atenção — uma vez prescrito, o direito não 
+            pode mais ser reivindicado em juízo.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Toda demissão sem justa causa gera indenização?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            A demissão sem justa causa, por si só, é direito do empregador. 
+            O que se discute em ações trabalhistas, em geral, são parcelas não 
+            pagas corretamente na rescisão (aviso prévio, férias, 13º, FGTS, 
+            multa de 40%) ou direitos não observados durante o vínculo (horas 
+            extras, adicional de insalubridade, equiparação, etc.).
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>O que é rescisão indireta e quando ela se aplica?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Rescisão indireta é a "demissão por justa causa do empregador": 
+            quando o empregador comete falta grave (atraso reiterado de salário, 
+            exigência fora do contrato, assédio, etc.), o trabalhador pode 
+            encerrar o contrato e receber as mesmas verbas de uma demissão sem 
+            justa causa. É uma medida que requer análise cuidadosa de provas.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Como funciona a primeira conversa com o escritório?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            A primeira conversa serve para entendermos o seu caso: você relata 
+            o histórico, apresentamos perguntas pertinentes e, ao final, 
+            indicamos se há indícios técnicos para uma ação ou se o caminho 
+            mais adequado é outro. Não há compromisso de contratação.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>O escritório atende empresas?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Sim. Além do contencioso trabalhista pelo lado do empregado, o 
+            escritório atende empresas em assessoria preventiva, compliance 
+            trabalhista, defesa em reclamatórias e estruturação de contratos 
+            com colaboradores e prestadores de serviço.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>O atendimento é apenas presencial em Londrina?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            A sede do escritório é em Londrina/PR, mas o atendimento pode ser 
+            feito de forma remota (vídeo ou telefone) para clientes de todo o 
+            estado e demais regiões, conforme a natureza do caso e a 
+            competência territorial aplicável.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CTA / FORM ====================== -->
+<section class="cta" id="contato">
+  <div class="container">
+    <div class="cta-grid">
+      <div class="cta-text">
+        <span class="eyebrow">Vamos conversar</span>
+        <h2 class="display" style="margin-top: 16px;">Conte o que <span class="accent">está acontecendo.</span></h2>
+        <p>
+          Preencha o formulário com o resumo do seu caso. Retornamos em até 
+          2 horas úteis com análise inicial e o próximo passo recomendado.
+        </p>
+
+        <div class="cta-info">
+          <div class="cta-info-item">
+            <span class="cta-info-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <span>+55 (43) 3024-3599 · WhatsApp (43) 99968-3380</span>
+          </div>
+          <div class="cta-info-item">
+            <span class="cta-info-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span>Av. Madre Leônia Milito, 1500, sala 511 — Londrina/PR</span>
+          </div>
+          <div class="cta-info-item">
+            <span class="cta-info-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <span>contato@fauneadv.com.br</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="cta-form" onsubmit="return false;">
+        <span class="eyebrow">Análise gratuita do caso</span>
+        <h3 class="display" style="margin-top: 8px;">Sobre o seu <span class="accent">caso.</span></h3>
+
+        <div class="form-grid">
+          <div class="form-row">
+            <input type="text" class="form-input" placeholder="Nome completo" required />
+            <input type="tel" class="form-input" placeholder="WhatsApp com DDD" required />
+          </div>
+          <input type="email" class="form-input" placeholder="E-mail" required />
+          <select class="form-select" required data-empty="true">
+            <option value="">Sua situação envolve…</option>
+            <option>Demissão / rescisão</option>
+            <option>Horas extras / jornada</option>
+            <option>Reconhecimento de vínculo</option>
+            <option>Assédio moral / condições de trabalho</option>
+            <option>Aposentadoria / INSS</option>
+            <option>Assessoria empresarial</option>
+            <option>Outra área de atuação</option>
+          </select>
+          <textarea class="form-textarea" placeholder="Descreva resumidamente o que aconteceu" rows="4"></textarea>
+          <button type="submit" class="form-submit">Enviar para análise <span>→</span></button>
+        </div>
+
+        <p class="form-disclaimer">
+          Os dados informados são tratados com confidencialidade, conforme a 
+          LGPD, e usados exclusivamente para o atendimento solicitado. Nenhum 
+          diagnóstico jurídico é emitido sem análise direta de um advogado 
+          do escritório.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="/public/logo-faune.webp" alt="Faune & Advogados Associados" class="footer-logo" />
+        </div>
+        <p class="footer-tagline">
+          Sociedade individual de advocacia inscrita na OAB/PR. 
+          Direito do Trabalho, Previdenciário, Civil, Empresarial e Agronegócio.
+        </p>
+      </div>
+      <div>
+        <h5>Áreas</h5>
+        <ul>
+          <li><a href="#">Trabalho</a></li>
+          <li><a href="#">Previdenciário</a></li>
+          <li><a href="#">Empresarial</a></li>
+          <li><a href="#">Civil</a></li>
+          <li><a href="#">Agronegócio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Escritório</h5>
+        <ul>
+          <li><a href="#metodo">Método</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#">Conteúdos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contato</h5>
+        <ul>
+          <li><a href="tel:+554330243599">(43) 3024-3599</a></li>
+          <li><a href="https://wa.me/5543999683380">WhatsApp</a></li>
+          <li><a href="mailto:contato@fauneadv.com.br">E-mail</a></li>
+          <li>Av. Madre Leônia Milito, 1500</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Faune &amp; Advogados Associados · OAB/PR</span>
+      <span>Política de Privacidade · LGPD · Provimento 205/2021</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(other => {
+        other.classList.remove('open');
+        other.querySelector('.faq-a').style.maxHeight = '0';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // form select color
+  document.querySelectorAll('.form-select').forEach(sel => {
+    sel.addEventListener('change', () => {
+      sel.dataset.empty = sel.value === '' ? 'true' : 'false';
+    });
+  });
+
+  // reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section > .container > .sec-header, .why-grid, .areas-grid, .method-steps, .profile-grid, .faq-list, .cta-grid').forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

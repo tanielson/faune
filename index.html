@@ -7,6 +7,13 @@
 <meta name="theme-color" content="#0A0F0D" />
 <title>Faune &amp; Advogados Associados — Direito do Trabalho · Londrina/PR</title>
 
+<!-- Favicon (ícone oficial Faune Advogados) -->
+<link rel="icon" type="image/png" sizes="32x32" href="https://fauneadv.com.br/wp-content/uploads/2022/12/cropped-ICONE-FAUNE-32x32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="https://fauneadv.com.br/wp-content/uploads/2022/12/cropped-ICONE-FAUNE-192x192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://fauneadv.com.br/wp-content/uploads/2022/12/cropped-ICONE-FAUNE-180x180.png" />
+<link rel="shortcut icon" href="https://fauneadv.com.br/wp-content/uploads/2022/12/cropped-ICONE-FAUNE-270x270.png" />
+<meta name="msapplication-TileImage" content="https://fauneadv.com.br/wp-content/uploads/2022/12/cropped-ICONE-FAUNE-270x270.png" />
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -264,8 +271,56 @@
   }
 
   @media (max-width: 920px) {
-    .nav-links > a:not(.nav-cta) { display: none; }
-    .menu-toggle { display: flex; }
+    .nav-inner { position: relative; }
+    .menu-toggle { display: flex; z-index: 1001; }
+    .menu-toggle span {
+      transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+    }
+    .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-links {
+      position: fixed;
+      top: 0; right: 0;
+      width: 100%;
+      max-width: 360px;
+      height: 100vh;
+      background: var(--bg-2);
+      border-left: 1px solid var(--line);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 100px 32px 40px;
+      gap: 8px;
+      transform: translateX(100%);
+      transition: transform 0.35s var(--ease);
+      box-shadow: -20px 0 60px rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links > a {
+      display: block;
+      width: 100%;
+      padding: 14px 0;
+      font-size: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-links > a.nav-cta {
+      margin-top: 16px;
+      width: auto;
+      border: none;
+      justify-content: center;
+    }
+    body.menu-open { overflow: hidden; }
+    body.menu-open::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 15, 13, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+    }
   }
 
   /* =========================================
@@ -587,6 +642,7 @@
       align-items: flex-start;
       margin-bottom: 50px;
     }
+    .stats-header .btn { justify-self: start; }
     .stats-cards {
       grid-template-columns: 1fr;
       gap: 16px;
@@ -606,16 +662,16 @@
 
   .sec-header {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 60px;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
     margin-bottom: 80px;
-    align-items: end;
+    align-items: center;
   }
   .sec-title {
     font-family: var(--font-display);
-    font-size: clamp(40px, 5vw, 64px);
+    font-size: clamp(36px, 4vw, 52px);
     font-weight: 800;
-    line-height: 1.02;
+    line-height: 1.05;
     letter-spacing: -0.03em;
     color: var(--ink);
     margin-top: 16px;
@@ -627,7 +683,7 @@
     font-size: 17px;
     line-height: 1.6;
     color: var(--ink-soft);
-    max-width: 540px;
+    max-width: 620px;
   }
 
   @media (max-width: 920px) {
@@ -640,6 +696,7 @@
      ========================================= */
   .why {
     background: var(--bg-2);
+    padding-top: 40px;
   }
   .why-grid {
     display: grid;
@@ -704,6 +761,7 @@
   }
 
   @media (max-width: 920px) {
+    .why { padding-top: 32px; }
     .why-grid { grid-template-columns: 1fr; }
   }
 
@@ -825,8 +883,128 @@
   .area:hover .area-link { gap: 16px; }
 
   @media (max-width: 920px) {
-    .area, .area.featured { grid-column: span 12; min-height: auto; }
+    .areas-grid { grid-template-columns: 1fr; }
+    .area, .area.featured, .area:not(.featured) {
+      grid-column: 1 / -1;
+      min-height: auto;
+    }
     .area.featured .area-name { font-size: 32px; }
+  }
+
+  /* =========================================
+     EQUIPE — ADVOGADOS ASSOCIADOS
+     ========================================= */
+  .team {
+    background: var(--bg);
+    position: relative;
+    padding: 40px 0 120px;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .lawyer-card {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s var(--ease);
+    display: flex;
+    flex-direction: column;
+  }
+  .lawyer-card:hover {
+    border-color: var(--brand);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .lawyer-top {
+    padding: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lawyer-info .lawyer-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--brand-glow);
+    color: var(--brand);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .lawyer-info .lawyer-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .lawyer-info .lawyer-specialty {
+    font-size: 13px;
+    color: var(--brand);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .lawyer-body {
+    padding: 28px 32px 32px;
+    flex: 1;
+  }
+  .lawyer-body p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .lawyer-body p:last-child { margin-bottom: 0; }
+  .lawyer-body p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .lawyer-credentials {
+    list-style: none;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--line);
+  }
+  .lawyer-credentials li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .lawyer-credentials li:last-child { margin-bottom: 0; }
+  .lawyer-credentials li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    background: var(--brand);
+    border-radius: 50%;
+  }
+
+  @media (max-width: 920px) {
+    .team { padding: 32px 0 80px; }
+    .team-grid { grid-template-columns: 1fr; gap: 16px; }
+    .lawyer-top {
+      padding: 24px;
+    }
+    .lawyer-info .lawyer-name { font-size: 19px; }
+    .lawyer-body { padding: 22px 24px 26px; }
   }
 
   /* =========================================
@@ -887,7 +1065,64 @@
     .method-steps { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 540px) {
+    .container { padding: 0 20px; }
     .method-steps { grid-template-columns: 1fr; }
+
+    /* Tipografia mais compacta */
+    .hero-title { font-size: clamp(28px, 8vw, 36px); line-height: 1.15; }
+    .hero-title .word { display: inline; }
+    .hero-lead { font-size: 15px; }
+    .stat-card { padding: 28px 20px; }
+    .stat-card .stat-num { font-size: 48px; }
+    .sec-title { font-size: 32px !important; }
+
+    /* Stats: força coluna única (estava 2x2 apertado) */
+    .stats-cards { grid-template-columns: 1fr; }
+
+    /* Hero ajuste mobile pequeno */
+    .hero-content { padding: 48px 20px 32px; }
+    .hero-photo { min-height: 380px; }
+    .hero-actions { flex-direction: column; align-items: stretch; width: 100%; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+
+    /* Overlay sobre a foto do hero - menor pra não cobrir o rosto */
+    .hero-photo-tag { bottom: 24px; padding: 14px 20px; }
+    .hero-photo-tag strong { font-size: 18px; }
+
+    /* CTA do perfil - reduzir padding em mobile pequeno */
+    .profile-cta { padding: 32px 24px; }
+    .profile-cta .btn-primary { width: 100%; justify-content: center; }
+
+    /* Footer mais compacto */
+    .footer { padding: 60px 0 28px; }
+    .footer-grid { gap: 32px; margin-bottom: 40px; }
+
+    /* Cards de área padding interno menor */
+    .area { padding: 24px; min-height: auto; }
+
+    /* Lawyer card padding menor */
+    .lawyer-top, .lawyer-body { padding: 20px !important; }
+
+    /* FAQ mais compacto */
+    .faq-q { padding: 22px 0; font-size: 15px; }
+
+    /* Nav logo um pouco menor */
+    .nav-logo { height: 36px; }
+
+    /* Overlay do card de perfil titular - menor pra não cobrir rosto */
+    .photo-overlay { padding: 20px 18px 24px; }
+    .photo-overlay strong { font-size: 18px; }
+    .overlay-detail { font-size: 11px; }
+    .overlay-eyebrow { font-size: 10px; }
+
+    /* Faixa de credenciais - em coluna única (estava 2x2 apertado) */
+    .credentials-bar {
+      grid-template-columns: 1fr !important;
+      gap: 28px 0 !important;
+      padding: 32px 20px !important;
+    }
+    .cred-num { font-size: 48px; }
+    .cred-num .small { font-size: 0.7em; }
   }
 
   /* =========================================
@@ -911,25 +1146,16 @@
   .profile-photo-large {
     aspect-ratio: 4/5;
     background:
-      radial-gradient(circle at 30% 20%, var(--brand-glow), transparent 60%),
-      linear-gradient(135deg, var(--bg-3) 0%, var(--surface) 100%);
+      linear-gradient(180deg, transparent 0%, transparent 50%, rgba(15, 26, 46, 0.5) 100%),
+      url('/public/dr-gustavo.webp');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
     border: 1px solid var(--line);
     border-radius: 20px;
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow-md);
-  }
-  .profile-photo-large::before {
-    content: "GF";
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-family: var(--font-display);
-    font-size: 280px;
-    font-weight: 900;
-    color: rgba(249, 115, 22, 0.06);
-    letter-spacing: -0.06em;
   }
   .photo-overlay {
     position: absolute;
@@ -1187,7 +1413,16 @@
   @media (max-width: 920px) {
     .profile { padding: 80px 0; }
     .profile-hero { grid-template-columns: 1fr; gap: 50px; }
-    .profile-photo-large { max-width: 480px; margin: 0 auto; }
+    .profile-photo-large {
+      max-width: 480px;
+      margin: 0 auto;
+      background-position: center 15%;
+    }
+    .photo-overlay {
+      padding: 24px 22px 28px;
+      background: linear-gradient(0deg, rgba(15, 26, 46, 0.98) 0%, rgba(15, 26, 46, 0.85) 70%, transparent 100%);
+    }
+    .photo-overlay strong { font-size: 22px; }
     .credentials-bar {
       grid-template-columns: 1fr 1fr;
       gap: 32px 0;
@@ -1285,6 +1520,7 @@
      ========================================= */
   .faq {
     background: var(--bg);
+    padding: 40px 0 120px;
   }
   .faq-list {
     max-width: 920px;
@@ -1338,6 +1574,10 @@
     color: var(--ink-soft);
     font-size: 15.5px;
     line-height: 1.7;
+  }
+
+  @media (max-width: 920px) {
+    .faq { padding: 32px 0 80px; }
   }
 
   /* =========================================
@@ -1509,18 +1749,19 @@
     margin-bottom: 60px;
   }
   .footer-brand {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 20px;
     background: #FFFFFF;
-    padding: 16px 24px;
-    border-radius: 12px;
+    padding: 10px 16px;
+    border-radius: 10px;
     align-self: flex-start;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+    width: fit-content;
   }
   .footer-logo {
-    height: 90px;
+    height: 48px;
     width: auto;
     display: block;
   }
@@ -1607,6 +1848,7 @@
     <div class="nav-links" id="navLinks">
       <a href="#por-que">Por que nós</a>
       <a href="#areas">Áreas</a>
+      <a href="#equipe">Equipe</a>
       <a href="#metodo">Método</a>
       <a href="#sobre">Sobre</a>
       <a href="#contato" class="nav-cta">Falar com o escritório →</a>
@@ -1695,7 +1937,7 @@
       </div>
       <p class="sec-intro">
         Cada característica abaixo reflete um princípio que orienta o escritório
-        desde a fundação. Sem promessas — apenas o que entregamos no dia a dia.
+        desde a fundação. Sem promessas; apenas o que entregamos no dia a dia.
       </p>
     </div>
 
@@ -1703,7 +1945,7 @@
       <article class="why-card">
         <div class="num">01.</div>
         <h3>Foco em Direito do Trabalho</h3>
-        <p>Especialização declarada na área trabalhista, com base sólida em causas conexas — previdenciário, civil e empresarial.</p>
+        <p>Especialização declarada na área trabalhista, com base sólida em causas conexas: previdenciário, civil e empresarial.</p>
       </article>
 
       <article class="why-card">
@@ -1727,7 +1969,7 @@
       <article class="why-card">
         <div class="num">05.</div>
         <h3>Comunicação clara</h3>
-        <p>Atualizações ativas em cada movimentação processual. O cliente nunca precisa pedir andamento — recebe automaticamente.</p>
+        <p>Atualizações ativas em cada movimentação processual. O cliente nunca precisa pedir andamento, recebe automaticamente.</p>
       </article>
 
       <article class="why-card">
@@ -1801,6 +2043,123 @@
         </p>
         <a href="#" class="area-link">Saber mais <span>→</span></a>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== EQUIPE — ADVOGADOS ASSOCIADOS ====================== -->
+<section class="team" id="equipe">
+  <div class="container">
+    <div class="sec-header">
+      <div>
+        <span class="eyebrow">A equipe</span>
+        <h2 class="sec-title display">Advogados associados<br>com <span class="accent">expertise complementar.</span></h2>
+      </div>
+      <p class="sec-intro">
+        Cada área de atuação é conduzida por advogado(a) com formação específica e
+        experiência consolidada na matéria. Atendimento autoral, sem terceirização
+        para profissionais externos ao escritório.
+      </p>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- Advogado 1: Mateus Panzeri Fasolo -->
+      <article class="lawyer-card">
+        <div class="lawyer-top">
+          <div class="lawyer-info">
+            <span class="lawyer-tag">Advogado Associado</span>
+            <h3 class="lawyer-name">Mateus Panzeri Fasolo</h3>
+            <div class="lawyer-specialty">Civil · Famílias e Sucessões · Trabalhista</div>
+          </div>
+        </div>
+        <div class="lawyer-body">
+          <p>
+            Bacharel em Direito pela <strong>Universidade Estadual de Londrina (UEL)</strong>,
+            com experiência consolidada em serventias judiciais e atuação processual.
+          </p>
+          <ul class="lawyer-credentials">
+            <li>Residência Jurídica no Tribunal de Justiça do Paraná (TJPR) — 2025/2026</li>
+            <li>Atuação em Direito Civil com ênfase em Direito das Famílias e Sucessório</li>
+            <li>Atuação complementar em Direito do Trabalho e Previdenciário</li>
+            <li>Experiência prévia em serventias judiciais</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Advogado 2: Welisson Vieira de Aguiar -->
+      <article class="lawyer-card">
+        <div class="lawyer-top">
+          <div class="lawyer-info">
+            <span class="lawyer-tag">Advogado Associado</span>
+            <h3 class="lawyer-name">Welisson Vieira de Aguiar</h3>
+            <div class="lawyer-specialty">Civil · Processual Civil · Contratos</div>
+          </div>
+        </div>
+        <div class="lawyer-body">
+          <p>
+            Bacharel pela <strong>UEL</strong> e Especialista em Advocacia Contenciosa Cível
+            pela Faculdade Legale, com atuação sólida em contencioso e consultoria contratual.
+          </p>
+          <ul class="lawyer-credentials">
+            <li>Especialista em Advocacia Contenciosa Cível — Faculdade Legale</li>
+            <li>Outorgado Doutor Honoris Causa pela OCB — Faculdade Febraica</li>
+            <li>Juiz Leigo no Juizado Especial Cível e da Fazenda Pública</li>
+            <li>Comissão de Promoção da Igualdade Racial e Minorias — OAB Londrina (coordenador 2020/2021)</li>
+            <li>Atuação consultiva forte na elaboração de contratos</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Advogado 3: Douglas da Silva Cruz -->
+      <article class="lawyer-card">
+        <div class="lawyer-top">
+          <div class="lawyer-info">
+            <span class="lawyer-tag">Advogado Associado</span>
+            <h3 class="lawyer-name">Douglas da Silva Cruz</h3>
+            <div class="lawyer-specialty">Empresarial · Societário · Perícia Forense</div>
+          </div>
+        </div>
+        <div class="lawyer-body">
+          <p>
+            Bacharel pela <strong>PUC-PR (Londrina)</strong>, com múltiplas especializações
+            em Direito Público, Constitucional Aplicado e Empresarial. Atuação nas esferas
+            administrativa, consultiva e contenciosa.
+          </p>
+          <ul class="lawyer-credentials">
+            <li>Especialista em Direito Público, Constitucional Aplicado e Empresarial — Faculdade Legale</li>
+            <li>Perito Judicial e Investigação Forense — INPAT FORENSE</li>
+            <li>Perito Ad Hoc, Assistente Técnico e Jurisconsultor — Instituto Juris Perito</li>
+            <li>Atuação direta em Direito Empresarial e Societário</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Advogado 4: João Victor Marques Soares -->
+      <article class="lawyer-card">
+        <div class="lawyer-top">
+          <div class="lawyer-info">
+            <span class="lawyer-tag">Advogado Associado</span>
+            <h3 class="lawyer-name">João Victor Marques Soares</h3>
+            <div class="lawyer-specialty">Agronegócio · Agrário e Ambiental · Previdenciário</div>
+          </div>
+        </div>
+        <div class="lawyer-body">
+          <p>
+            Bacharel pela <strong>PUC-PR (Londrina)</strong> com MBA em Agronegócio pela
+            ESALQ/USP. Mais de 5 anos atuando na linha de frente de grandes empresas
+            do setor agropecuário.
+          </p>
+          <ul class="lawyer-credentials">
+            <li>Especialista em Direito Aplicado — Escola da Magistratura do Paraná (EMAP/PR)</li>
+            <li>Especialista em Direito Previdenciário — IDCC Londrina</li>
+            <li>MBA em Agronegócio — ESALQ/USP</li>
+            <li>Experiência de 5+ anos em grandes empresas do Agronegócio</li>
+            <li>Atuação em Direito Agrário, Ambiental e Previdenciário</li>
+          </ul>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -1922,7 +2281,7 @@
 
         <div class="bio-quote">
           <span class="quote-mark">"</span>
-          <p>Cada caso trabalhista carrega uma história — e o trabalho do advogado é traduzir essa história em <span class="accent">argumento jurídico sustentável.</span></p>
+          <p>Cada caso trabalhista carrega uma história, e o trabalho do advogado é traduzir essa história em <span class="accent">argumento jurídico sustentável.</span></p>
           <span class="quote-attr">— Dr. Gustavo Faune</span>
         </div>
       </div>
@@ -1969,7 +2328,7 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           </div>
           <h4>Especialidade declarada</h4>
-          <p>Atuação concentrada em Direito do Trabalho, com base sólida em causas conexas — Previdenciário, Civil, Empresarial e Agronegócio.</p>
+          <p>Atuação concentrada em Direito do Trabalho, com base sólida em causas conexas: Previdenciário, Civil, Empresarial e Agronegócio.</p>
         </div>
 
         <div class="bio-item">
@@ -1993,7 +2352,7 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <h4>Sede em Londrina</h4>
-          <p>Escritório localizado na Av. Madre Leônia Milito, 1500, sala 511 — Bela Suíça. Atendimento presencial e remoto em todo o Paraná.</p>
+          <p>Escritório localizado na Av. Madre Leônia Milito, 1500, sala 511, Bela Suíça. Atendimento presencial e remoto em todo o Paraná.</p>
         </div>
 
         <div class="bio-item">
@@ -2018,22 +2377,6 @@
       </a>
     </div>
 
-  </div>
-</section>
-
-<!-- ====================== LEAD MAGNET ====================== -->
-<section class="lead-magnet">
-  <div class="container">
-    <div class="lead-magnet-grid">
-      <div>
-        <h3>Guia gratuito: 10 direitos trabalhistas que poucos conhecem.</h3>
-        <p>Conteúdo educativo elaborado pelo escritório. Receba no seu e-mail.</p>
-      </div>
-      <form class="lead-magnet-form" onsubmit="return false;">
-        <input type="email" placeholder="seu@email.com" required />
-        <button type="submit">Receber guia</button>
-      </form>
-    </div>
   </div>
 </section>
 
@@ -2167,7 +2510,7 @@
             <span class="cta-info-icon">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </span>
-            <span>Av. Madre Leônia Milito, 1500, sala 511 — Londrina/PR</span>
+            <span>Av. Madre Leônia Milito, 1500, sala 511, Londrina/PR</span>
           </div>
           <div class="cta-info-item">
             <span class="cta-info-icon">
@@ -2292,6 +2635,40 @@
       sel.dataset.empty = sel.value === '' ? 'true' : 'false';
     });
   });
+
+  // mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (menuToggle && navLinks) {
+    const closeMenu = () => {
+      menuToggle.classList.remove('open');
+      navLinks.classList.remove('open');
+      document.body.classList.remove('menu-open');
+    };
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.classList.toggle('open', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
+    });
+    // Fecha ao clicar em qualquer link de navegação
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+    // Fecha ao clicar fora (no overlay)
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('open') &&
+          !navLinks.contains(e.target) &&
+          !menuToggle.contains(e.target)) {
+        closeMenu();
+      }
+    });
+    // Fecha ao redimensionar para desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 920 && navLinks.classList.contains('open')) {
+        closeMenu();
+      }
+    });
+  }
 
   // reveal on scroll
   const observer = new IntersectionObserver((entries) => {

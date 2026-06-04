@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Faune & Advogados Associados — escritório em Londrina/PR especializado em Direito do Trabalho. Mais de uma década de atuação no TRT9 e TJPR." />
+<meta name="description" content="Faune & Advogados Associados. Escritório de advocacia com sede em Londrina/PR e atendimento nas principais cidades do Brasil. Atuação em Trabalhista, Previdenciário, Empresarial, Civil e Agronegócio, com mais de uma década de experiência." />
 <meta name="theme-color" content="#0A0F0D" />
-<title>Faune &amp; Advogados Associados — Direito do Trabalho · Londrina/PR</title>
+<title>Faune &amp; Advogados Associados · Advocacia multidisciplinar · Atendimento em todo o Brasil</title>
 
 <!-- Favicon (ícone oficial Faune Advogados) -->
 <link rel="icon" type="image/png" sizes="32x32" href="https://fauneadv.com.br/wp-content/uploads/2022/12/cropped-ICONE-FAUNE-32x32.png" />
@@ -389,10 +389,9 @@
     background-image: linear-gradient(transparent 70%, rgba(212, 168, 69, 0.18) 70%);
   }
   .hero-title .word {
-    display: inline-block;
+    display: inline;
     opacity: 0;
-    transform: translateY(40px);
-    animation: rise 0.9s var(--ease-out) forwards;
+    animation: fadeIn 0.9s var(--ease-out) forwards;
   }
   .hero-title .word:nth-child(1) { animation-delay: 0.2s; }
   .hero-title .word:nth-child(2) { animation-delay: 0.3s; }
@@ -522,6 +521,13 @@
       text-align: center;
       align-items: center;
     }
+    /* Em telas estreitas, o título flui como texto normal
+       (sem grupos inline-block que quebram empilhado) */
+    .hero-title {
+      font-size: clamp(32px, 5.4vw, 46px);
+      line-height: 1.12;
+    }
+    .hero-title .word { display: inline; }
     .hero-photo {
       min-height: 480px;
     }
@@ -795,7 +801,7 @@
   }
   .areas-grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
   .area {
@@ -829,7 +835,7 @@
     transform: translateY(-6px);
     box-shadow: 0 20px 60px rgba(43, 217, 160, 0.4);
   }
-  .area:not(.featured) { grid-column: span 3; }
+  .area { grid-column: span 1; }
 
   .area-tag {
     display: inline-flex;
@@ -1040,7 +1046,7 @@
   }
   .method-steps {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--line);
     border: 1px solid var(--line);
@@ -1086,7 +1092,7 @@
   }
 
   @media (max-width: 920px) {
-    .method-steps { grid-template-columns: 1fr 1fr; }
+    .method-steps { grid-template-columns: 1fr; }
   }
   @media (max-width: 540px) {
     .container { padding: 0 20px; }
@@ -1768,8 +1774,8 @@
   }
   .footer-grid {
     display: grid;
-    grid-template-columns: 2.2fr 1fr 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 2fr 1fr 1fr 1.4fr;
+    gap: 48px;
     margin-bottom: 60px;
   }
   .footer-brand {
@@ -1834,6 +1840,44 @@
     transition: color 0.25s var(--ease);
   }
   .footer a:hover { color: var(--brand); }
+
+  /* coluna de contato com ícones */
+  .footer-contact { gap: 18px; }
+  .footer-contact a {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    line-height: 1.35;
+  }
+  .footer-contact a:hover { color: var(--brand); }
+  .footer-contact svg {
+    flex-shrink: 0;
+    width: 18px; height: 18px;
+    margin-top: 1px;
+    color: var(--brand);
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .footer-contact .fc-wa svg { stroke: none; fill: currentColor; }
+  .footer-contact .fc-text {
+    display: block;
+    word-break: break-word;
+    font-weight: 500;
+  }
+  .footer-contact .fc-label {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 400;
+    color: var(--ink-faint);
+    margin-top: 3px;
+    letter-spacing: 0.01em;
+  }
   .footer-base {
     padding-top: 32px;
     border-top: 1px solid var(--line);
@@ -1857,6 +1901,49 @@
   .reveal {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* links clicáveis na faixa de contato */
+  .cta-info-item a {
+    color: inherit;
+    transition: color 0.2s var(--ease);
+  }
+  .cta-info-item a:hover { color: var(--brand); }
+
+  /* ========== BOTÃO FLUTUANTE WHATSAPP ========== */
+  .wa-float {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #FFFFFF;
+    display: grid;
+    place-items: center;
+    z-index: 200;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    animation: wa-pulse 2.4s var(--ease) infinite;
+  }
+  .wa-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 32px rgba(37, 211, 102, 0.6), 0 4px 12px rgba(0, 0, 0, 0.35);
+  }
+  .wa-float svg { display: block; }
+
+  @keyframes wa-pulse {
+    0%   { box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0.5); }
+    70%  { box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45), 0 0 0 16px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+
+  @media (max-width: 540px) {
+    .wa-float { right: 18px; bottom: 18px; width: 54px; height: 54px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wa-float { animation: none; }
   }
 </style>
 </head>
@@ -1887,17 +1974,18 @@
   <!-- Lado esquerdo: conteúdo -->
   <div class="hero-content">
     <div class="hero-eyebrow">
-      <span class="eyebrow">Londrina · PR · Atuação desde 2014</span>
+      <span class="eyebrow">Sede em Londrina/PR · Atendimento nacional · Desde 2014</span>
     </div>
     <h1 class="hero-title">
-      <span class="word">Escritório especializado em</span>
-      <span class="word"><span class="accent">Direito do Trabalho</span>,</span>
-      <span class="word">defendendo seus direitos.</span>
+      <span class="word">Advocacia completa</span>
+      <span class="word">para <span class="accent">pessoas e empresas</span></span>
+      <span class="word">em todo o Brasil.</span>
     </h1>
     <p class="hero-lead">
-      Mais de uma década atuando em causas trabalhistas no Paraná, com 
-      histórico consolidado no TRT da 9ª Região. Atendimento direto com o 
-      titular, análise técnica caso a caso, comunicação clara em cada etapa.
+      Mais de uma década de atuação em cinco áreas: Trabalhista,
+      Previdenciário, Empresarial, Civil e Agronegócio. Sede em Londrina/PR
+      e atendimento nas principais cidades do Brasil, com análise técnica
+      caso a caso e comunicação clara em cada etapa.
     </p>
     <div class="hero-actions">
       <a href="#contato" class="btn btn-primary">
@@ -1925,8 +2013,8 @@
   <div class="container">
     <div class="stats-header">
       <h2 class="stats-title">
-        Especialistas em Direito do Trabalho:<br>
-        <span class="accent">atuação consolidada</span> no Paraná.
+        Atuação técnica e <span class="accent">multidisciplinar</span><br>
+        nas principais cidades do Brasil.
       </h2>
       <a href="#contato" class="btn btn-primary">
         Falar com o escritório
@@ -1941,8 +2029,8 @@
       </div>
       <div class="stat-connector"></div>
       <div class="stat-card">
-        <div class="stat-num">400<span class="plus">+</span></div>
-        <div class="stat-label">Processos no TRT9<br>e TJPR</div>
+        <div class="stat-num">100<span class="plus">%</span></div>
+        <div class="stat-label">Atendimento autoral,<br>sem terceirização</div>
       </div>
       <div class="stat-connector"></div>
       <div class="stat-card">
@@ -1970,20 +2058,20 @@
     <div class="why-grid">
       <article class="why-card">
         <div class="num">01.</div>
-        <h3>Foco em Direito do Trabalho</h3>
-        <p>Especialização declarada na área trabalhista, com base sólida em causas conexas: previdenciário, civil e empresarial.</p>
+        <h3>Atuação multidisciplinar</h3>
+        <p>Cinco áreas conexas (Trabalhista, Previdenciário, Empresarial, Civil e Agronegócio) para atender pessoas e empresas com a mesma profundidade técnica.</p>
       </article>
 
       <article class="why-card">
         <div class="num">02.</div>
         <h3>Mais de uma década de atuação</h3>
-        <p>Histórico consolidado em centenas de processos no TRT da 9ª Região, com método consistente de análise documental e estratégica.</p>
+        <p>Histórico consolidado e método consistente de análise documental e construção de estratégia, com atuação nas principais cidades do Brasil.</p>
       </article>
 
       <article class="why-card">
         <div class="num">03.</div>
         <h3>Atendimento direto com o titular</h3>
-        <p>No Direito do Trabalho, o Dr. Gustavo conduz pessoalmente cada caso. Nas demais áreas, a condução é de advogado(a) associado(a) especializado(a) na matéria — sem terceirização para profissionais externos ao escritório.</p>
+        <p>No Direito do Trabalho, o Dr. Gustavo conduz pessoalmente cada caso. Nas demais áreas, a condução é de advogado(a) associado(a) especializado(a) na matéria, sem terceirização para profissionais externos ao escritório.</p>
       </article>
 
       <article class="why-card">
@@ -2013,25 +2101,25 @@
     <div class="sec-header">
       <div>
         <span class="eyebrow">Áreas de atuação</span>
-        <h2 class="sec-title display">Cinco frentes,<br>uma <span class="accent">especialidade central.</span></h2>
+        <h2 class="sec-title display">Cinco áreas,<br>uma <span class="accent">advocacia completa.</span></h2>
       </div>
       <p class="sec-intro">
-        O escritório atua em áreas conexas que frequentemente se cruzam na vida 
-        de uma pessoa ou empresa. Direito do Trabalho é nossa atuação de maior 
-        tradição e volume.
+        O escritório atua em cinco áreas conexas que frequentemente se cruzam na
+        vida de uma pessoa ou empresa, oferecendo solução jurídica técnica e
+        próxima em cada uma delas.
       </p>
     </div>
 
     <div class="areas-grid">
-      <article class="area featured">
-        <span class="area-tag">Especialidade principal</span>
+      <article class="area">
+        <div class="area-num">01 / Trabalhista</div>
         <h3 class="area-name">Direito<br>do Trabalho</h3>
         <p class="area-desc">
-          Atuação em causas de empregados e empregadores: rescisão, horas extras, 
-          equiparação salarial, reconhecimento de vínculo, insalubridade, 
-          assédio moral, compliance trabalhista e atuação preventiva e contenciosa.
+          Causas de empregados e empregadores: rescisão, horas extras,
+          equiparação salarial, reconhecimento de vínculo, insalubridade,
+          assédio moral e compliance trabalhista.
         </p>
-        <a href="#" class="area-link">Conhecer a atuação <span>→</span></a>
+        <a href="#" class="area-link">Saber mais <span>→</span></a>
       </article>
 
       <article class="area">
@@ -2065,7 +2153,7 @@
         <div class="area-num">05 / Agronegócio</div>
         <h3 class="area-name">Agronegócio</h3>
         <p class="area-desc">
-          Atuação especializada para o setor produtivo do norte do Paraná.
+          Atuação especializada para produtores rurais e o setor do agronegócio em todo o país.
         </p>
         <a href="#" class="area-link">Saber mais <span>→</span></a>
       </article>
@@ -2105,7 +2193,7 @@
             com experiência consolidada em serventias judiciais e atuação processual.
           </p>
           <ul class="lawyer-credentials">
-            <li>Residência Jurídica no Tribunal de Justiça do Paraná (TJPR) — 2025/2026</li>
+            <li>Residência Jurídica no Tribunal de Justiça do Paraná (TJPR), 2025/2026</li>
             <li>Atuação em Direito Civil com ênfase em Direito das Famílias e Sucessório</li>
             <li>Atuação complementar em Direito do Trabalho e Previdenciário</li>
             <li>Experiência prévia em serventias judiciais</li>
@@ -2128,10 +2216,10 @@
             pela Faculdade Legale, com atuação sólida em contencioso e consultoria contratual.
           </p>
           <ul class="lawyer-credentials">
-            <li>Especialista em Advocacia Contenciosa Cível — Faculdade Legale</li>
-            <li>Outorgado Doutor Honoris Causa pela OCB — Faculdade Febraica</li>
+            <li>Especialista em Advocacia Contenciosa Cível pela Faculdade Legale</li>
+            <li>Outorgado Doutor Honoris Causa pela OCB / Faculdade Febraica</li>
             <li>Juiz Leigo no Juizado Especial Cível e da Fazenda Pública</li>
-            <li>Comissão de Promoção da Igualdade Racial e Minorias — OAB Londrina (coordenador 2020/2021)</li>
+            <li>Comissão de Promoção da Igualdade Racial e Minorias da OAB Londrina (coordenador 2020/2021)</li>
             <li>Atuação consultiva forte na elaboração de contratos</li>
           </ul>
         </div>
@@ -2153,9 +2241,9 @@
             administrativa, consultiva e contenciosa.
           </p>
           <ul class="lawyer-credentials">
-            <li>Especialista em Direito Público, Constitucional Aplicado e Empresarial — Faculdade Legale</li>
-            <li>Perito Judicial e Investigação Forense — INPAT FORENSE</li>
-            <li>Perito Ad Hoc, Assistente Técnico e Jurisconsultor — Instituto Juris Perito</li>
+            <li>Especialista em Direito Público, Constitucional Aplicado e Empresarial pela Faculdade Legale</li>
+            <li>Perito Judicial e Investigação Forense pela INPAT FORENSE</li>
+            <li>Perito Ad Hoc, Assistente Técnico e Jurisconsultor pelo Instituto Juris Perito</li>
             <li>Atuação direta em Direito Empresarial e Societário</li>
           </ul>
         </div>
@@ -2177,9 +2265,9 @@
             do setor agropecuário.
           </p>
           <ul class="lawyer-credentials">
-            <li>Especialista em Direito Aplicado — Escola da Magistratura do Paraná (EMAP/PR)</li>
-            <li>Especialista em Direito Previdenciário — IDCC Londrina</li>
-            <li>MBA em Agronegócio — ESALQ/USP</li>
+            <li>Especialista em Direito Aplicado pela Escola da Magistratura do Paraná (EMAP/PR)</li>
+            <li>Especialista em Direito Previdenciário pelo IDCC Londrina</li>
+            <li>MBA em Agronegócio pela ESALQ/USP</li>
             <li>Experiência de 5+ anos em grandes empresas do Agronegócio</li>
             <li>Atuação em Direito Agrário, Ambiental e Previdenciário</li>
           </ul>
@@ -2199,8 +2287,8 @@
         <h2 class="sec-title display">Como conduzimos<br>um <span class="accent">caso.</span></h2>
       </div>
       <p class="sec-intro">
-        Um processo bem estruturado começa muito antes da petição inicial. 
-        Nosso método se desenvolve em quatro etapas claras e comunicadas 
+        Um processo bem estruturado começa muito antes da petição inicial.
+        Nosso método se desenvolve em três etapas claras e comunicadas
         ao cliente.
       </p>
     </div>
@@ -2233,21 +2321,11 @@
           <span class="dot"></span>
           <span>Etapa 03</span>
         </div>
-        <h4 class="step-title">Estratégia jurídica</h4>
+        <h4 class="step-title">Estratégia e acompanhamento</h4>
         <p class="step-desc">
-          Apresentação clara dos cenários possíveis, riscos, prazos e 
-          expectativas realistas.
-        </p>
-      </div>
-      <div class="method-step">
-        <div class="step-num">
-          <span class="dot"></span>
-          <span>Etapa 04</span>
-        </div>
-        <h4 class="step-title">Acompanhamento</h4>
-        <p class="step-desc">
-          Comunicação ativa em cada movimentação processual, sem que o cliente 
-          precise pedir atualizações.
+          Apresentação clara dos cenários possíveis, riscos e prazos, com
+          comunicação ativa em cada movimentação processual, sem que o
+          cliente precise pedir atualizações.
         </p>
       </div>
     </div>
@@ -2267,7 +2345,7 @@
       <p class="sec-intro">
         O Faune & Advogados Associados é um escritório autoral. No Direito do Trabalho, cada caso é
         conduzido diretamente pelo titular; nas demais áreas, por advogado(a) associado(a)
-        especializado(a) na matéria — sem terceirização para profissionais externos ao escritório.
+        especializado(a) na matéria, sem terceirização para profissionais externos ao escritório.
       </p>
     </div>
 
@@ -2285,19 +2363,19 @@
 
       <div class="profile-bio">
         <span class="bio-tag">Trajetória</span>
-        <h3 class="bio-title display">Direito do trabalho como <span class="accent">vocação técnica.</span></h3>
+        <h3 class="bio-title display">A técnica jurídica como <span class="accent">vocação.</span></h3>
 
         <div class="bio-content">
           <p>
-            Bacharel em Direito pela <strong>PUC-PR (Londrina)</strong>, o Dr. Gustavo Faune 
-            iniciou sua atuação profissional em 2014 e construiu, ao longo de mais de uma 
-            década, um histórico consistente em causas trabalhistas no Paraná.
+            Bacharel em Direito pela <strong>PUC-PR (Londrina)</strong>, o Dr. Gustavo Faune
+            iniciou sua atuação profissional em 2014 e construiu, ao longo de mais de uma
+            década, um histórico consistente e uma abordagem técnica reconhecida na advocacia.
           </p>
           <p>
-            Com participação direta em <strong>mais de 400 processos</strong> no Tribunal 
-            Regional do Trabalho da 9ª Região e no Tribunal de Justiça do Paraná, desenvolveu 
-            metodologia própria de análise documental e construção de argumento jurídico, 
-            aplicada caso a caso.
+            Ao longo dessa trajetória, desenvolveu <strong>metodologia própria</strong> de
+            análise documental e construção de argumento jurídico, aplicada caso a caso,
+            com atenção dedicada e estratégia individual para cada cliente, e não pela
+            simples quantidade de processos.
           </p>
           <p>
             Em 2022, constituiu o escritório como <strong>sociedade individual de advocacia</strong>, 
@@ -2308,8 +2386,8 @@
 
         <div class="bio-quote">
           <span class="quote-mark">"</span>
-          <p>Cada caso trabalhista carrega uma história, e o trabalho do advogado é traduzir essa história em <span class="accent">argumento jurídico sustentável.</span></p>
-          <span class="quote-attr">— Dr. Gustavo Faune</span>
+          <p>Cada caso carrega uma história, e o trabalho do advogado é traduzir essa história em <span class="accent">argumento jurídico sustentável.</span></p>
+          <span class="quote-attr">Dr. Gustavo Faune</span>
         </div>
       </div>
     </div>
@@ -2322,8 +2400,8 @@
       </div>
       <div class="cred-divider"></div>
       <div class="cred-stat">
-        <div class="cred-num">400<span class="plus">+</span></div>
-        <div class="cred-label">processos no TRT9<br>e TJPR</div>
+        <div class="cred-num">100<span class="small">%</span></div>
+        <div class="cred-label">atendimento autoral<br>sem terceirização</div>
       </div>
       <div class="cred-divider"></div>
       <div class="cred-stat">
@@ -2332,8 +2410,8 @@
       </div>
       <div class="cred-divider"></div>
       <div class="cred-stat">
-        <div class="cred-num">100<span class="small">%</span></div>
-        <div class="cred-label">atendimento autoral<br>sem terceirização externa</div>
+        <div class="cred-num">2<span class="small">h</span></div>
+        <div class="cred-label">retorno com<br>análise inicial</div>
       </div>
     </div>
 
@@ -2354,16 +2432,16 @@
           <div class="bio-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           </div>
-          <h4>Especialidade declarada</h4>
-          <p>Atuação concentrada em Direito do Trabalho, com base sólida em causas conexas: Previdenciário, Civil, Empresarial e Agronegócio.</p>
+          <h4>Áreas de atuação</h4>
+          <p>Atuação do escritório em cinco frentes: Trabalhista, Previdenciário, Empresarial, Civil e Agronegócio, com equipe especializada em cada matéria.</p>
         </div>
 
         <div class="bio-item">
           <div class="bio-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M9 17V9M14 17v-5M19 17v-3"/></svg>
           </div>
-          <h4>Histórico processual</h4>
-          <p>Mais de 400 processos atuados perante o TRT da 9ª Região e o Tribunal de Justiça do Paraná, com experiência comprovada em todas as instâncias.</p>
+          <h4>Atuação caso a caso</h4>
+          <p>Cada processo recebe análise individual e estratégia própria, com acompanhamento direto e experiência comprovada em todas as instâncias.</p>
         </div>
 
         <div class="bio-item">
@@ -2371,15 +2449,15 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75M8.5 7.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/></svg>
           </div>
           <h4>Atendimento autoral</h4>
-          <p>Cada caso é conduzido pessoalmente pelo Dr. Gustavo, da consulta inicial à decisão final. Sem delegação para advogados externos ou estagiários.</p>
+          <p>Os casos são conduzidos por advogados do próprio escritório. No Direito do Trabalho, diretamente pelo Dr. Gustavo. Sem terceirização para profissionais externos.</p>
         </div>
 
         <div class="bio-item">
           <div class="bio-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-          <h4>Sede em Londrina</h4>
-          <p>Escritório localizado na Av. Madre Leônia Milito, 1500, sala 511, Bela Suíça. Atendimento presencial e remoto em todo o Paraná.</p>
+          <h4>Sede em Londrina, atendimento nacional</h4>
+          <p>Escritório localizado na Av. Madre Leônia Milito, 1500, sala 511, Bela Suíça. Atendimento presencial em Londrina e remoto nas principais cidades do Brasil.</p>
         </div>
 
         <div class="bio-item">
@@ -2433,7 +2511,7 @@
             No Brasil, a regra geral é que o trabalhador tem até 2 anos após o 
             fim do contrato para ingressar com ação trabalhista, podendo cobrar 
             verbas referentes aos últimos 5 anos do vínculo. Esse prazo é 
-            fundamental e merece atenção — uma vez prescrito, o direito não 
+            fundamental e merece atenção: uma vez prescrito, o direito não
             pode mais ser reivindicado em juízo.
           </div>
         </div>
@@ -2503,9 +2581,9 @@
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            A sede do escritório é em Londrina/PR, mas o atendimento pode ser 
-            feito de forma remota (vídeo ou telefone) para clientes de todo o 
-            estado e demais regiões, conforme a natureza do caso e a 
+            A sede do escritório é em Londrina/PR, mas o atendimento pode ser
+            feito de forma remota (vídeo ou telefone) para clientes nas
+            principais cidades do Brasil, conforme a natureza do caso e a
             competência territorial aplicável.
           </div>
         </div>
@@ -2531,7 +2609,7 @@
             <span class="cta-info-icon">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </span>
-            <span>+55 (43) 3024-3599 · WhatsApp (43) 99968-3380</span>
+            <span><a href="tel:+554330243599">+55 (43) 3024-3599</a> · <a href="https://wa.me/5543999683380?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20uma%20an%C3%A1lise%20do%20meu%20caso." target="_blank" rel="noopener">WhatsApp (43) 99968-3380</a></span>
           </div>
           <div class="cta-info-item">
             <span class="cta-info-icon">
@@ -2543,7 +2621,7 @@
             <span class="cta-info-icon">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </span>
-            <span>contato@fauneadv.com.br</span>
+            <span><a href="mailto:gustavo@fauneadv.com.br">gustavo@fauneadv.com.br</a></span>
           </div>
         </div>
       </div>
@@ -2592,8 +2670,9 @@
           <img src="/public/logo-faune.webp" alt="Faune & Advogados Associados" class="footer-logo" />
         </div>
         <p class="footer-tagline">
-          Sociedade individual de advocacia inscrita na OAB/PR. 
-          Direito do Trabalho, Previdenciário, Civil, Empresarial e Agronegócio.
+          Sociedade individual de advocacia inscrita na OAB/PR.
+          Sede em Londrina/PR e atendimento nas principais cidades do Brasil.
+          Atuação em Trabalhista, Previdenciário, Civil, Empresarial e Agronegócio.
         </p>
       </div>
       <div>
@@ -2617,11 +2696,31 @@
       </div>
       <div>
         <h5>Contato</h5>
-        <ul>
-          <li><a href="tel:+554330243599">(43) 3024-3599</a></li>
-          <li><a href="https://wa.me/5543999683380">WhatsApp</a></li>
-          <li><a href="mailto:contato@fauneadv.com.br">E-mail</a></li>
-          <li>Av. Madre Leônia Milito, 1500</li>
+        <ul class="footer-contact">
+          <li>
+            <a class="fc-wa" href="https://wa.me/5543999683380?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20uma%20an%C3%A1lise%20do%20meu%20caso." target="_blank" rel="noopener">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.003 3C9.38 3 4 8.38 4 15.003c0 2.117.553 4.184 1.604 6.01L4 29l8.18-1.57a11.94 11.94 0 0 0 3.823.626h.001c6.623 0 12.003-5.38 12.003-12.003C28.007 8.38 22.627 3 16.003 3zm0 21.94h-.001a9.93 9.93 0 0 1-5.06-1.386l-.363-.215-4.854.932.94-4.732-.236-.376a9.91 9.91 0 0 1-1.52-5.293c0-5.49 4.467-9.957 9.96-9.957 2.66 0 5.16 1.037 7.04 2.92a9.89 9.89 0 0 1 2.916 7.04c0 5.49-4.467 9.957-9.957 9.957zm5.462-7.456c-.3-.15-1.77-.873-2.045-.973-.274-.1-.474-.15-.673.15-.2.3-.773.973-.948 1.173-.174.2-.349.225-.648.075-.3-.15-1.264-.466-2.408-1.485-.89-.794-1.49-1.774-1.665-2.074-.174-.3-.019-.462.131-.611.135-.134.3-.349.45-.524.149-.174.199-.3.299-.499.1-.2.05-.374-.025-.524-.075-.15-.673-1.623-.923-2.223-.243-.583-.49-.504-.673-.513l-.574-.01c-.2 0-.524.075-.798.374-.274.3-1.047 1.023-1.047 2.496 0 1.473 1.072 2.896 1.222 3.096.15.2 2.11 3.222 5.115 4.518.715.309 1.272.493 1.707.631.717.228 1.37.196 1.886.119.575-.086 1.77-.724 2.02-1.423.25-.699.25-1.298.175-1.423-.075-.124-.274-.199-.574-.349z"/></svg>
+              <span class="fc-text">(43) 99968-3380<span class="fc-label">WhatsApp · resposta rápida</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+554330243599">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span class="fc-text">(43) 3024-3599<span class="fc-label">Telefone fixo</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:gustavo@fauneadv.com.br">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span class="fc-text">gustavo@fauneadv.com.br</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://maps.google.com/?q=Av.%20Madre%20Le%C3%B4nia%20Milito%2C%201500%2C%20Londrina%20PR" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span class="fc-text">Av. Madre Leônia Milito, 1500, sala 511<span class="fc-label">Bela Suíça · Londrina/PR</span></span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -2631,6 +2730,16 @@
     </div>
   </div>
 </footer>
+
+<!-- ====================== BOTÃO FLUTUANTE WHATSAPP ====================== -->
+<a class="wa-float"
+   href="https://wa.me/5543999683380?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20uma%20an%C3%A1lise%20do%20meu%20caso."
+   target="_blank" rel="noopener"
+   aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true">
+    <path d="M16.003 3C9.38 3 4 8.38 4 15.003c0 2.117.553 4.184 1.604 6.01L4 29l8.18-1.57a11.94 11.94 0 0 0 3.823.626h.001c6.623 0 12.003-5.38 12.003-12.003C28.007 8.38 22.627 3 16.003 3zm0 21.94h-.001a9.93 9.93 0 0 1-5.06-1.386l-.363-.215-4.854.932.94-4.732-.236-.376a9.91 9.91 0 0 1-1.52-5.293c0-5.49 4.467-9.957 9.96-9.957 2.66 0 5.16 1.037 7.04 2.92a9.89 9.89 0 0 1 2.916 7.04c0 5.49-4.467 9.957-9.957 9.957zm5.462-7.456c-.3-.15-1.77-.873-2.045-.973-.274-.1-.474-.15-.673.15-.2.3-.773.973-.948 1.173-.174.2-.349.225-.648.075-.3-.15-1.264-.466-2.408-1.485-.89-.794-1.49-1.774-1.665-2.074-.174-.3-.019-.462.131-.611.135-.134.3-.349.45-.524.149-.174.199-.3.299-.499.1-.2.05-.374-.025-.524-.075-.15-.673-1.623-.923-2.223-.243-.583-.49-.504-.673-.513l-.574-.01c-.2 0-.524.075-.798.374-.274.3-1.047 1.023-1.047 2.496 0 1.473 1.072 2.896 1.222 3.096.15.2 2.11 3.222 5.115 4.518.715.309 1.272.493 1.707.631.717.228 1.37.196 1.886.119.575-.086 1.77-.724 2.02-1.423.25-.699.25-1.298.175-1.423-.075-.124-.274-.199-.574-.349z"/>
+  </svg>
+</a>
 
 <script>
   // nav scroll

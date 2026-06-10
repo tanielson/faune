@@ -1546,6 +1546,60 @@
   }
 
   /* =========================================
+     AMBIENTE / ESTRUTURA
+     ========================================= */
+  .ambiente-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    grid-template-rows: repeat(2, 232px);
+    gap: 16px;
+  }
+  .ambiente-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+    margin: 0;
+  }
+  .ambiente-item--tall {
+    grid-row: 1 / span 2;
+  }
+  .ambiente-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease);
+  }
+  .ambiente-item:hover img {
+    transform: scale(1.04);
+  }
+  .ambiente-cap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 32px 20px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: #fff;
+    background: linear-gradient(to top, rgba(8, 14, 28, 0.82), transparent);
+  }
+
+  @media (max-width: 760px) {
+    .ambiente-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+      gap: 14px;
+    }
+    .ambiente-item--tall { grid-row: auto; }
+    .ambiente-item {
+      aspect-ratio: 16 / 10;
+    }
+  }
+
+  /* =========================================
      FAQ
      ========================================= */
   .faq {
@@ -1983,6 +2037,7 @@
       <a href="#equipe">Equipe</a>
       <a href="#metodo">Método</a>
       <a href="#sobre">Sobre</a>
+      <a href="#estrutura">Estrutura</a>
       <a href="#contato" class="nav-cta">Falar com o escritório →</a>
     </div>
   </div>
@@ -2504,6 +2559,38 @@
   </div>
 </section>
 
+<!-- ====================== AMBIENTE / ESTRUTURA ====================== -->
+<section class="ambiente" id="estrutura">
+  <div class="container">
+    <div class="sec-header">
+      <div>
+        <span class="eyebrow">Nosso espaço</span>
+        <h2 class="sec-title display">Um ambiente pensado<br>para <span class="accent">recebê-lo.</span></h2>
+      </div>
+      <p class="sec-intro">
+        Atendimento presencial em sede própria, na Atsushi Yoshii Tower, em
+        Londrina/PR. Um espaço reservado, confortável e discreto, à altura da
+        confidencialidade que cada caso exige.
+      </p>
+    </div>
+
+    <div class="ambiente-grid">
+      <figure class="ambiente-item ambiente-item--tall">
+        <img src="/public/escritorio-fachada.webp" alt="Fachada da Atsushi Yoshii Tower, sede do escritório Faune & Advogados Associados em Londrina/PR" loading="lazy" />
+        <figcaption class="ambiente-cap">Atsushi Yoshii Tower · Londrina/PR</figcaption>
+      </figure>
+      <figure class="ambiente-item">
+        <img src="/public/escritorio-recepcao.webp" alt="Recepção do escritório com a identidade Faune & Advogados Associados" loading="lazy" />
+        <figcaption class="ambiente-cap">Recepção</figcaption>
+      </figure>
+      <figure class="ambiente-item">
+        <img src="/public/escritorio-sala.webp" alt="Sala de reunião e atendimento do escritório com vista para a cidade" loading="lazy" />
+        <figcaption class="ambiente-cap">Sala de atendimento</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- ====================== FAQ ====================== -->
 <section class="faq">
   <div class="container">
@@ -2835,7 +2922,7 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('section > .container > .sec-header, .why-grid, .areas-grid, .method-steps, .profile-grid, .faq-list, .cta-grid').forEach(el => {
+  document.querySelectorAll('section > .container > .sec-header, .why-grid, .areas-grid, .method-steps, .profile-grid, .ambiente-grid, .faq-list, .cta-grid').forEach(el => {
     el.classList.add('reveal');
     observer.observe(el);
   });

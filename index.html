@@ -1759,6 +1759,25 @@
     margin-top: 14px;
   }
 
+  .form-status {
+    font-size: 13px;
+    line-height: 1.4;
+    margin: -2px 0 2px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+  .form-status[hidden] { display: none; }
+  .form-status.is-error {
+    color: #b42318;
+    background: rgba(180, 35, 24, 0.08);
+  }
+  .form-status.is-success {
+    color: #0a7d3f;
+    background: rgba(10, 125, 63, 0.08);
+  }
+  .form-submit[disabled] { opacity: 0.6; cursor: not-allowed; }
+
   @media (max-width: 920px) {
     .cta-grid { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
@@ -2630,30 +2649,33 @@
         <span class="eyebrow">Análise técnica, sem compromisso</span>
         <h3 class="display" style="margin-top: 8px;">Sobre o seu <span class="accent">caso.</span></h3>
 
+        <!-- Formulário integrado ao CRM (gdigital) — names/ids NÃO devem ser alterados -->
         <div class="form-grid">
           <div class="form-row">
-            <input type="text" class="form-input" placeholder="Nome completo" required />
-            <input type="tel" class="form-input" placeholder="WhatsApp com DDD" required />
+            <input type="text" autocomplete="name" placeholder="Nome completo" required aria-required="true" class="form-input" name="nome-preview" mascara="form-control" id="nome-field" />
+            <input type="tel" autocomplete="tel" placeholder="WhatsApp com DDD" required aria-required="true" class="form-input" name="telefone-preview" mascara="telefone form-control" id="telefone-field" />
           </div>
-          <input type="email" class="form-input" placeholder="E-mail" required />
-          <select class="form-select" required data-empty="true">
-            <option value="">Sua situação envolve…</option>
-            <option>Demissão / rescisão</option>
-            <option>Horas extras / jornada</option>
-            <option>Reconhecimento de vínculo</option>
-            <option>Assédio moral / condições de trabalho</option>
-            <option>Aposentadoria / INSS</option>
-            <option>Assessoria empresarial</option>
-            <option>Outra área de atuação</option>
+          <input type="email" autocomplete="email" placeholder="E-mail" required aria-required="true" class="form-input" name="email-preview" mascara="form-control" id="email-field" />
+          <select class="form-select" name="select-preview" aria-required="true" required data-empty="true" id="select-select-preview">
+            <option value="" disabled selected>Sua situação envolve…</option>
+            <option value="opo-1">Demissão / Rescisão</option>
+            <option value="opo-2">Horas Extras / Jornada</option>
+            <option value="opo-3">Reconhecimento de vínculo</option>
+            <option value="opo-4">Assédio moral / Condições de trabalho</option>
+            <option value="opo-5">Aposentadoria / INSS</option>
+            <option value="opo-6">Assessoria empresarial</option>
           </select>
-          <textarea class="form-textarea" placeholder="Descreva resumidamente o que aconteceu" rows="4"></textarea>
-          <button type="submit" class="form-submit">Enviar para análise <span>→</span></button>
+          <textarea rows="4" placeholder="Descreva resumidamente o que aconteceu" required aria-required="true" class="form-textarea" name="text-area-preview" id="textarea-1672693080469-preview"></textarea>
+          <input type="hidden" id="tenant_id" value="32668" />
+          <input type="hidden" id="form_id" value="2" />
+          <p class="form-status" data-log="infoLog" aria-live="polite" style="display: none;">Por favor, preencha os campos corretamente</p>
+          <button onclick="send()" type="button" name="Cadastre-se" data-action="submit" class="form-submit">Enviar para análise <span>→</span></button>
         </div>
 
         <p class="form-disclaimer">
-          Os dados informados são tratados com confidencialidade, conforme a 
-          LGPD, e usados exclusivamente para o atendimento solicitado. Nenhum 
-          diagnóstico jurídico é emitido sem análise direta de um advogado 
+          Os dados informados são tratados com confidencialidade, conforme a
+          LGPD, e usados exclusivamente para o atendimento solicitado. Nenhum
+          diagnóstico jurídico é emitido sem análise direta de um advogado
           do escritório.
         </p>
       </form>
@@ -2817,6 +2839,128 @@
     el.classList.add('reveal');
     observer.observe(el);
   });
+
+</script>
+
+<!-- ====================== INTEGRAÇÃO CRM (gdigital) ====================== -->
+<!-- Script oficial do gdigital. NÃO alterar names/ids dos campos no formulário. -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  let formsInputs = document.querySelectorAll("form input");
+  for (let i = 0; i < formsInputs.length; i++) {
+    const element = formsInputs[i];
+    const mask = element.getAttribute('mascara');
+    if (mask && mask.includes('telefone')) {
+      function formatPhoneNumber(value) {
+        value = value.replace(/\D/g, '');
+        if (value.length === 0) return '';
+        if (value.length <= 2) return `(${value}`;
+        if (value.length <= 6) return `(${value.slice(0, 2)}) ${value.slice(2)}`;
+        if (value.length <= 10) return `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
+        return `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7, 11)}`;
+      }
+      element.addEventListener('input', function (e) {
+        e.target.value = formatPhoneNumber(e.target.value);
+      });
+    }
+  }
+
+  function send() {
+    let formData = new FormData();
+    let formsInputs = document.querySelectorAll("form input");
+    let textsarea = document.querySelectorAll("form textarea");
+    let selects = document.querySelectorAll("form select");
+    let checked = false;
+    let checkbox_required = false;
+    formData.append("tenant_id", document.querySelector("#tenant_id").value);
+    formData.append("form_id", document.querySelector("#form_id").value);
+    for (let i = 0; i < formsInputs.length; i++) {
+      const element = formsInputs[i];
+      let name_field = element.name.replace("-preview", "");
+      if (
+        element.type !== "radio" &&
+        element.type !== "checkbox" &&
+        element.type !== "file") {
+        // telefone vai apenas com dígitos para o CRM
+        let value = element.getAttribute('mascara') && element.getAttribute('mascara').includes('telefone')
+          ? element.value.replace(/\D/g, '')
+          : element.value;
+        formData.append(name_field, value);
+      }
+      document.querySelector('[data-log="infoLog"]').style.display = "none";
+      if (element.type === "email" && element.name.includes('email')) {
+        const emailValue = element.value;
+        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!emailRegex.test(emailValue)) {
+          const infoLog = document.querySelector('[data-log="infoLog"]');
+          infoLog.style.color = "red";
+          infoLog.style.display = "block";
+          infoLog.innerText = "Por favor, insira um e-mail válido";
+          return;
+        }
+      }
+      if (element.ariaRequired && element.value === "") {
+        document.querySelector('[data-log="infoLog"]').style.color = "red";
+        document.querySelector('[data-log="infoLog"]').style.display = "block";
+        return;
+      }
+      checkbox_required =
+        element.type === "checkbox" && element.ariaRequired ? true : false;
+      if (
+        (element.type === "radio" && element.checked) ||
+        (element.type === "checkbox" && element.checked)
+      ) {
+        checked = element.type === "checkbox" ? true : false;
+        formData.append(name_field, element.value);
+      }
+    }
+    if (!checked && checkbox_required) {
+      document.querySelector('[data-log="infoLog"]').style.color = "red";
+      document.querySelector('[data-log="infoLog"]').style.display = "block";
+      return;
+    }
+    document.querySelector('[data-log="infoLog"]').style.display = "none";
+    for (let i = 0; i < textsarea.length; i++) {
+      const element = textsarea[i];
+      let name_field = element.name.replace("-preview", "");
+      formData.append(name_field, element.value);
+      document.querySelector('[data-log="infoLog"]').style.display = "none";
+      if (element.ariaRequired && element.value === "") {
+        document.querySelector('[data-log="infoLog"]').style.color = "red";
+        document.querySelector('[data-log="infoLog"]').style.display = "block";
+        return;
+      }
+    }
+    for (let i = 0; i < selects.length; i++) {
+      const element = selects[i];
+      let name_field = element.name.replace("-preview", "");
+      formData.append(name_field, element.value);
+      document.querySelector('[data-log="infoLog"]').style.display = "none";
+      if (element.ariaRequired && element.value === "") {
+        document.querySelector('[data-log="infoLog"]').style.color = "red";
+        document.querySelector('[data-log="infoLog"]').style.display = "block";
+        return;
+      }
+    }
+    const infoLog = document.querySelector('[data-log="infoLog"]');
+    infoLog.style.color = "";
+    infoLog.style.display = "block";
+    infoLog.innerText = "Enviando…";
+    axios
+      .post("https://back.gdigital.com.br/" + "form/register", formData)
+      .then((resp) => {
+        infoLog.style.color = "green";
+        infoLog.style.display = "block";
+        infoLog.innerText = "Recebemos seus dados. Em breve um advogado entrará em contato.";
+        document.querySelector("form").reset();
+        document.querySelectorAll('.form-select').forEach((sel) => { sel.dataset.empty = 'true'; });
+      })
+      .catch((error) => {
+        infoLog.style.color = "red";
+        infoLog.style.display = "block";
+        infoLog.innerText = "Por favor, preencha os campos corretamente";
+      });
+  }
 </script>
 
 </body>

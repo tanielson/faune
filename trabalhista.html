@@ -89,6 +89,14 @@
   .btn-wa:focus-visible, .top-link:focus-visible, summary:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
   .note { font-size: 14.5px; color: var(--ink-mute); }
 
+  .ask { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: -8px; }
+  .chip { display: inline-flex; align-items: center; min-height: 48px; padding: 10px 16px; border-radius: 100px; border: 1.5px solid var(--line); background: var(--bg-3); color: var(--ink); font-size: 15px; font-weight: 600; text-decoration: none; }
+  .chip:hover, .chip:focus-visible { border-color: var(--brand); color: var(--brand); }
+  .chip:focus-visible, .tel:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+  .tel { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; color: var(--ink-soft); font-size: 15.5px; text-decoration: none; margin-top: -8px; }
+  .tel b { color: var(--brand); margin-left: 6px; }
+
   .cols { display: grid; gap: 20px; }
   .card { background: var(--bg-3); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
   .card ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
@@ -148,14 +156,24 @@
     <div class="stack">
       <p class="eyebrow">Londrina/PR · presencial ou por vídeo</p>
       <h1>Advogado trabalhista em <span class="gold">Londrina</span></h1>
-      <p class="lede">Atendimento a empregados e a empresas. No Direito do Trabalho, cada caso é conduzido diretamente pelo advogado titular do escritório.</p>
-      <div class="who">
-        <img src="/public/dr-gustavo.webp" alt="Dr. Gustavo Faune" width="1066" height="1213" />
-        <div><strong>Dr. Gustavo Faune</strong><span>OAB/PR 74.720 · Faune &amp; Advogados Associados</span></div>
+      <p class="lede">Atendimento a empregados e a empresas, conduzido diretamente pelo advogado titular do escritório.</p>
+      <p class="ask">Sobre o que você precisa falar?</p>
+      <div class="chips">
+        <a class="chip" data-wa data-cta="assunto-demissao" data-assunto="demissão e rescisão" href="https://wa.me/5543999683380" target="_blank" rel="noopener">Demissão e rescisão</a>
+        <a class="chip" data-wa data-cta="assunto-horas-extras" data-assunto="horas extras" href="https://wa.me/5543999683380" target="_blank" rel="noopener">Horas extras</a>
+        <a class="chip" data-wa data-cta="assunto-justa-causa" data-assunto="justa causa" href="https://wa.me/5543999683380" target="_blank" rel="noopener">Justa causa</a>
+        <a class="chip" data-wa data-cta="assunto-sem-carteira" data-assunto="trabalho sem carteira assinada" href="https://wa.me/5543999683380" target="_blank" rel="noopener">Sem carteira assinada</a>
+        <a class="chip" data-wa data-cta="assunto-acidente" data-assunto="acidente de trabalho" href="https://wa.me/5543999683380" target="_blank" rel="noopener">Acidente de trabalho</a>
+        <a class="chip" data-wa data-cta="assunto-empresa" data-assunto="uma questão trabalhista da minha empresa" href="https://wa.me/5543999683380" target="_blank" rel="noopener">Sou empresa</a>
       </div>
       <a class="btn-wa" data-wa data-cta="hero" href="https://wa.me/5543999683380?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20sobre%20uma%20quest%C3%A3o%20trabalhista." target="_blank" rel="noopener"><svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor" aria-hidden="true">
     <path d="M16.003 3C9.38 3 4 8.38 4 15.003c0 2.117.553 4.184 1.604 6.01L4 29l8.18-1.57a11.94 11.94 0 0 0 3.823.626h.001c6.623 0 12.003-5.38 12.003-12.003C28.007 8.38 22.627 3 16.003 3zm0 21.94h-.001a9.93 9.93 0 0 1-5.06-1.386l-.363-.215-4.854.932.94-4.732-.236-.376a9.91 9.91 0 0 1-1.52-5.293c0-5.49 4.467-9.957 9.96-9.957 2.66 0 5.16 1.037 7.04 2.92a9.89 9.89 0 0 1 2.916 7.04c0 5.49-4.467 9.957-9.957 9.957zm5.462-7.456c-.3-.15-1.77-.873-2.045-.973-.274-.1-.474-.15-.673.15-.2.3-.773.973-.948 1.173-.174.2-.349.225-.648.075-.3-.15-1.264-.466-2.408-1.485-.89-.794-1.49-1.774-1.665-2.074-.174-.3-.019-.462.131-.611.135-.134.3-.349.45-.524.149-.174.199-.3.299-.499.1-.2.05-.374-.025-.524-.075-.15-.673-1.623-.923-2.223-.243-.583-.49-.504-.673-.513l-.574-.01c-.2 0-.524.075-.798.374-.274.3-1.047 1.023-1.047 2.496 0 1.473 1.072 2.896 1.222 3.096.15.2 2.11 3.222 5.115 4.518.715.309 1.272.493 1.707.631.717.228 1.37.196 1.886.119.575-.086 1.77-.724 2.02-1.423.25-.699.25-1.298.175-1.423-.075-.124-.274-.199-.574-.349z"/>
   </svg>Chamar no WhatsApp</a>
+      <a class="tel" href="tel:+554330243599" data-cta="telefone-hero">Prefere ligar? <b>(43) 3024-3599</b></a>
+      <div class="who">
+        <img src="/public/dr-gustavo.webp" alt="Dr. Gustavo Faune" width="1066" height="1213" />
+        <div><strong>Dr. Gustavo Faune</strong><span>OAB/PR 74.720 · Faune &amp; Advogados Associados</span></div>
+      </div>
       <p class="note">A primeira conversa serve para entender o seu caso. Não há compromisso de contratação.</p>
     </div>
     <img class="hero-photo" src="/public/dr-gustavo.webp" alt="Dr. Gustavo Faune, advogado trabalhista" width="1066" height="1213" />
@@ -259,9 +277,15 @@
   (function () {
     var q = new URLSearchParams(location.search);
     var google = q.get('utm_source') === 'google' || q.has('gclid') || q.has('gbraid') || q.has('wbraid');
-    var msg = 'Olá! Vim pelo ' + (google ? 'Google' : 'site') + ' e gostaria de falar sobre uma questão trabalhista.';
-    var url = 'https://wa.me/5543999683380?text=' + encodeURIComponent(msg);
-    document.querySelectorAll('[data-wa]').forEach(function (a) { a.href = url; });
+    var msg = 'Olá! Vim pelo ' + (google ? 'Google' : 'site') + ' e gostaria de falar sobre ';
+    // O botão de assunto já leva o tema na mensagem; os demais, o texto geral.
+    document.querySelectorAll('[data-wa]').forEach(function (a) {
+      a.href = 'https://wa.me/5543999683380?text=' + encodeURIComponent(msg + (a.dataset.assunto || 'uma questão trabalhista') + '.');
+    });
+    // Ligação não é link de saída, então o GA4 não registra sozinho.
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+      a.addEventListener('click', function () { if (window.gtag) gtag('event', 'contato_telefone', { cta: a.dataset.cta }); });
+    });
 
     // A barra fixa só aparece quando nenhum dos botões grandes está na tela, para não ficarem dois juntos.
     var bar = document.querySelector('.bar'), vistos = new Set();
